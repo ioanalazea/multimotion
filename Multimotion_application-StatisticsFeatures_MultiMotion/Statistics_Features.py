@@ -366,7 +366,6 @@ def compute_features_interval(df, stimuli, interval_data, filename, file_names):
 
 
 def compute_features(df, filename, file_path, file_names):
-    print('HERE')
     data_for_qualitySignals_FER = df[["SourceStimuliName", "Anger", "Timestamp"]]
     # data_for_qualitySignals_PupilSize = df[['SourceStimuliName', 'ET_PupilLeft', 'Timestamp']]
     # data_for_qualitySignals_HeartRate = df[['SourceStimuliName', 'IBI PPG ALG', 'Timestamp']]
