@@ -81,8 +81,7 @@ def statistics_features(data_path, processed_data_path):
                 interval_decesion_for_all_participants_split_videos.get_arousal_data(
                     filename
                 )
-            )
-            
+            )            
             
             # Features for whole video
             features = compute_features(
@@ -103,7 +102,7 @@ def statistics_features(data_path, processed_data_path):
         df["video"] = df["video"].replace(mapping_data)
 
         df_merged = df.merge(
-            pupil_arousal_data[["stimuli_name_1", "arousal_data"]],
+            pupil_arousal_data[["stimuli_name_1", "arousal_data", "Valence", "Arousal"]],
             left_on="video",
             right_on="stimuli_name_1",
             how="left",
@@ -372,7 +371,7 @@ def compute_features(df, filename, file_path, file_names):
     # data_for_qualitySignals_gsr = df[['SourceStimuliName', 'Tonic Signal', 'Timestamp']]
 
     # pupilSize_quality_signals = quality_signals_PupilSize(data_for_qualitySignals_PupilSize, filename)
-    fer_quality_signals = quality_signals_FER(data_for_qualitySignals_FER, filename)
+    # fer_quality_signals = quality_signals_FER(data_for_qualitySignals_FER, filename)
     # heartRate_quality_signals = quality_signals_HeartRate(data_for_qualitySignals_HeartRate, filename)
     # gsr_quality_signals = quality_signals_GSR(data_for_qualitySignals_gsr, filename)
 
@@ -392,7 +391,6 @@ def compute_features(df, filename, file_path, file_names):
     kurtosis_FER_valence = []
 
     for emotion in emotions:
-        print(emotion)
         sum_valence = 0
         sum_arousal = 0
         total_number_valence = 0
@@ -474,7 +472,7 @@ def compute_features(df, filename, file_path, file_names):
         "FER_Max_Arousal": max_arousal_values,
         "FER_Min_Valence": min_valence_values,
         "FER_Min_Arousal": min_arousal_values,
-        "FER_Quality_Signals": fer_quality_signals["FER_Quality_Signals"],
+        # "FER_Quality_Signals": fer_quality_signals["FER_Quality_Signals"],
         # 'Pupil_after_mean_normalize': pupil_data['after_mean_normalize'],
         # 'Pupil_after_min_normalize': pupil_data['after_min_normalize'],
         # 'Pupil_after_max_normalize': pupil_data['after_max_normalize'],
