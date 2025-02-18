@@ -1,0 +1,11 @@
+{
+  "data_files": "Files/Myfiles/Imputated files",
+  "features_files": "Files/Myfiles/Features",
+  "combined_file": "Files/Processed_files/Features file/combined features",
+  "ground_truth_file": "Files/Processed_files/Ground_truth_file/individual_ground_truth.csv",
+  "merge_file": "Files/Processed_files/merge Files",
+  "imputation_files": "Files/Myfiles/Imputated files/",
+  "gsr_signal_noise": "Files/Processed_files/GSR_SignalQuality/GSR_signal_quality.csv",
+  "best_features": "Files/Processed_files/best features file/",
+  "pupil_data": "Files/Myfiles/all_healthy_part/"
+}
