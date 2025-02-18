@@ -48,7 +48,7 @@ def main():
         choice = input("Enter the number of the function you want to choose: ")
 
         if choice == "0":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Data Files Path: {repository_data['data_files']}")
             print(f"  - Imputed Files Output Path: {repository_data['imputation_files']}")
             
@@ -59,7 +59,7 @@ def main():
                 continue
 
         elif choice == "1":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Data Files Path: {repository_data['data_files']}")
             print(f"  - Features Output Path: {repository_data['features_files']}")
 
@@ -70,7 +70,7 @@ def main():
                 continue
 
         elif choice == "2":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Features Files Path: {repository_data['features_files']}")
             print(f"  - Combined File Output Path: {repository_data['combined_file']}")
 
@@ -81,7 +81,7 @@ def main():
                 continue
 
         elif choice == "3":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Combined Features File: {repository_data['combined_file']}")
             print(f"  - Ground Truth File: {repository_data['ground_truth_file']}")
             print(f"  - Merged File Output Path: {repository_data['merge_file']}")
@@ -95,7 +95,7 @@ def main():
                 continue
 
         elif choice == "4":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Merged File Path: {repository_data['merge_file']}")
             print(f"  - Best Features Output Path: {repository_data['best_features']}")
 
@@ -106,7 +106,7 @@ def main():
                 continue
 
         elif choice == "5":
-            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Initial Data Files Path: {repository_data['data_files']}")
             print(f"  - Pupil Data Output Path: {repository_data['pupil_data']}")
 
