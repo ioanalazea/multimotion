@@ -141,15 +141,15 @@ def fit_model(lux , pupil_size):
 
     a, b, c, e = popt1
     
-    x_line = arange(0, max(lux), 1)
-    plt.scatter(lux,pupil_size, color='blue')
-    y_line = objective(x_line, a, b ,c, e)
-    plt.plot(x_line, y_line, '--', color='black', label=f'Curve Fit (R^2={r_squared:.2f})')
-    pyplot.title('blue model for participant 3')
-    pyplot.xlabel('lux grid')
-    pyplot.ylabel('Pupil size(mm)')
-    plt.legend()
-    pyplot.show()
+    # x_line = arange(0, max(lux), 1)
+    # plt.scatter(lux,pupil_size, color='blue')
+    # y_line = objective(x_line, a, b ,c, e)
+    # plt.plot(x_line, y_line, '--', color='black', label=f'Curve Fit (R^2={r_squared:.2f})')
+    # pyplot.title('blue model for participant 3')
+    # pyplot.xlabel('lux grid')
+    # pyplot.ylabel('Pupil size(mm)')
+    # plt.legend()
+    # pyplot.show()
     return popt1
 
 

@@ -18,7 +18,8 @@ def define_paths():
         "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles/all_healthy_part"
     )
     interval_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/multimotion-emotion-recognition/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/interval.csv"
-    gt_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles/filtered_participant/individual_ground_truth.csv"
+    gt_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles/Ground_truth_file/individual_ground_truth_full_video.csv"
+    
     return home_dir, relative_path, interval_path, gt_path
 
 

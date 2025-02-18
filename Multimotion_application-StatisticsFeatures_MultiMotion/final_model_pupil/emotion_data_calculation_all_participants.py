@@ -74,17 +74,15 @@ def process_csv_files(relative_path, output_path):
 
 
     # Step 2: Get the list of video file names from the folder
-    video_folder = 'D:/MASTER/Uni of Essex/Disseration/Hassan/multimotion-emotion-recognition/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/survey_stimuli'  # Replace with the actual folder path
+    video_folder = 'D:/MASTER/Uni of Essex/Disseration/Hassan/trying/multimotion/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/survey_stimuli'  # Replace with the actual folder path
     video_files = [os.path.splitext(f)[0] for f in os.listdir(os.path.join(home_dir, video_folder)) if f.endswith(('.mp4', '.avi', '.mov'))]
     df_list = []
-
     for filename in os.listdir(full_path):
         if filename.endswith('.csv'):  # Check if the file is a CSV file
             filepath = os.path.join(full_path, filename)
 
             # Read the CSV file
             df = pd.read_csv(filepath, encoding='ISO-8859-1')
-            
             # Adjust header and respondent name
             df, header, respondent_name = find_and_set_header(df, 0, "Row")
             if header is None:

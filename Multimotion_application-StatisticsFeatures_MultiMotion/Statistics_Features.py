@@ -110,7 +110,10 @@ def statistics_features(data_path, processed_data_path):
 
         # Drop the helper column 'stimuli_name_1' from the merge
         df_merged = df_merged.drop(columns=["stimuli_name_1"])
-
+        
+        # Renaming arousal_data to Pupil_size
+        df_merged = df_merged.rename(columns={"arousal_data": "Pupil_size"})
+        
         path = processed_data_path + rf"\{filename}"
         df_merged.to_csv(path, index=False)
 
