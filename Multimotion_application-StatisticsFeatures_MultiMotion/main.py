@@ -1,115 +1,127 @@
+import json
+import os
 from Statistics_Features import statistics_features
 from Combining_all_Statistics_Features import combining_statistics_features
 from merge_files import merge_file
 from Imputation import imputation_files
 from best_features import best_features
-from final_model_pupil import emotion_data_calculation_all_participants
-from final_model_pupil import Normal_RGB_model as RGB_N
+from final_model_pupil.emotion_data_calculation_all_participants import process_csv_files
 
-if __name__ == "__main__":
+# Load repository paths dynamically
+def load_paths():
+    try:
+        base_path = os.path.dirname(os.path.abspath(__file__))  # Get script directory
+        json_path = os.path.join(base_path, "multimotion_file_path.json")  # Adjust for structure
+        
+        parent_path = os.path.dirname(base_path)  # One level up
 
-    repository_data = {}
-    with open("repository.txt", "r") as txt_file:
-        for line in txt_file:
-            name, url = line.strip().split(',')
-            repository_data[name] = url
+        with open(json_path, "r") as json_file:
+            repository_data = json.load(json_file)
 
-    # Access repositories using the dictionary
-    repository_name_1 = "data_files"
-    data_files_path = repository_data[repository_name_1]
+        # Prepend the dynamically found base path to all file paths
+        repository_data = {key: os.path.join(parent_path, value) for key, value in repository_data.items()}
+        return repository_data
+    except FileNotFoundError:
+        print("Error: 'multimotion_file_path.json' not found. Please ensure it exists.")
+        exit(1)
+    except json.JSONDecodeError:
+        print("Error: 'multimotion_file_path.json' is not properly formatted.")
+        exit(1)
 
-    repository_name_2 = "Features_files"
-    features_files_path = repository_data[repository_name_2]
+def main():
+    repository_data = load_paths()
 
-    repository_name_3 = "Combined_File"
-    combined_file_path = repository_data[repository_name_3]
-
-    repository_name_4 = "Ground_truth_File"
-    Ground_truth_File = repository_data[repository_name_4]
-
-    repository_name_5 = "merge_File"
-    merge_File = repository_data[repository_name_5]
-
-    repository_name_6 = "imputation_Files"
-    imputation_Files_path = repository_data[repository_name_6]
-
-    repository_name_7 = "GSR_SignalNoise"
-    GSR_QualitySignals_path = repository_data[repository_name_7]
-
-    repository_name_8 = "best_features"
-    best_features_path = repository_data[repository_name_8]
+    print(repository_data)
     
-    repository_name_9 = "pupil_data"
-    pupil_data_path = repository_data[repository_name_9]
-
     while True:
-        print("\nChoose a function:")
+        print("\n" + "=" * 50)
+        print("Choose a function:")
         print("0. Imputation files")
         print("1. Convert Data File into features matrix")
-        print("2. Combined all features data files")
+        print("2. Combine all features data files")
         print("3. Merge all data with Ground Truth & GSR Signals to noise ratio")
         print("4. Extract Best features")
         print("5. Extract pupil features")
+        print("6. Exit")
+        print("=" * 50)
+
         choice = input("Enter the number of the function you want to choose: ")
 
         if choice == "0":
-            print("\n Now go to the Respository.txt file, Change the Path of Line 1, where you have all data files or imputated data files"
-                  "from the imotion\n "
-                  ",and Line 6, change the path where you would like to have your imputated files")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Data Files Path: {repository_data['data_files']}")
+            print(f"  - Imputed Files Output Path: {repository_data['imputation_files']}")
+            
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                imputation_files(data_files_path, imputation_Files_path,)
+                imputation_files(repository_data["data_files"], repository_data["imputation_files"])
             else:
                 continue
 
-        if choice == "1":
-            print("\nNow go to the Respository.txt file, Change the Paths of Line 1, where you have all the data files,"
-                  " and Line 2, where u want all of you files after processed, ")
-                 # "\nFinally Line 7 give the path of the file of GSR Signal Quality File")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
+        elif choice == "1":
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Data Files Path: {repository_data['data_files']}")
+            print(f"  - Features Output Path: {repository_data['features_files']}")
+
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                statistics_features(data_files_path, features_files_path)
-            else:
-                continue
-        if choice == "2":
-            print("\n Now go to the Respository.txt file, Change the Path of Line 2, where you have all the "
-                  "statistics features data files, "
-                  " \nfrom Choice 1, And Line 3 path to where you want to add your combined feature file \n")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
-            if choice_2 == "1":
-                combining_statistics_features(features_files_path, combined_file_path)
+                statistics_features(repository_data["data_files"], repository_data["features_files"])
             else:
                 continue
 
-        if choice == "3":
-            print("\n Now go to the Respository.txt file, Change the Path of Line 3, where you have combined features "
-                  "file from Choice 2, \n "
-                  "Line 4 path where you have ground truth file"
-                  "\n and line 5 where want your Final data file to be."
-                  "\n line 7 where your GSR quality signal data")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
+        elif choice == "2":
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Features Files Path: {repository_data['features_files']}")
+            print(f"  - Combined File Output Path: {repository_data['combined_file']}")
+
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                merge_file(combined_file_path, Ground_truth_File, merge_File, GSR_QualitySignals_path)
+                combining_statistics_features(repository_data["features_files"], repository_data["combined_file"])
             else:
                 continue
 
-        if choice == "4":
-            print("\n Now go to the Respository.txt file, Change the Path of Line 5, where you have your final data "
-                  "file from option 3 "
-                  "\n line 8, add path where you want your features file")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
+        elif choice == "3":
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Combined Features File: {repository_data['combined_file']}")
+            print(f"  - Ground Truth File: {repository_data['ground_truth_file']}")
+            print(f"  - Merged File Output Path: {repository_data['merge_file']}")
+            print(f"  - GSR Quality Signals Path: {repository_data['gsr_signal_noise']}")
+
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                best_features(merge_File, best_features_path)
-            else:
-                continue
-        if choice == "5":
-            print("\n Now go to the Respository.txt file, Change the Path of Line 1, where you have your initial data "
-                  "\n line 9, add path where you want your pupil data output files")
-            choice_2 = input("\nPress 1 to continue, or any other number to go back to previous statement:")
-            if choice_2 == "1":
-                emotion_data_calculation_all_participants.process_csv_files(data_files_path, pupil_data_path)
+                merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
+                           repository_data["merge_file"], repository_data["gsr_signal_noise"])
             else:
                 continue
 
+        elif choice == "4":
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Merged File Path: {repository_data['merge_file']}")
+            print(f"  - Best Features Output Path: {repository_data['best_features']}")
 
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
+            if choice_2 == "1":
+                best_features(repository_data["merge_file"], repository_data["best_features"])
+            else:
+                continue
 
+        elif choice == "5":
+            print("\nEnsure 'multimotion_file_path.json' is correctly configured:")
+            print(f"  - Initial Data Files Path: {repository_data['data_files']}")
+            print(f"  - Pupil Data Output Path: {repository_data['pupil_data']}")
+
+            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
+            if choice_2 == "1":
+                process_csv_files(repository_data["data_files"], repository_data["pupil_data"])
+            else:
+                continue
+
+        elif choice == "6":
+            print("Exiting program...")
+            break
+
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
