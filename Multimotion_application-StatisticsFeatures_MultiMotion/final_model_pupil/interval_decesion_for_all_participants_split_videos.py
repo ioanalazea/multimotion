@@ -11,15 +11,21 @@ import os
 # Global configurations
 sns.set(style="whitegrid")
 
+
 # Define Paths
 def define_paths():
-    home_dir = "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles"
-    relative_path = (
-        "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles/all_healthy_part"
+    # files path
+    files_path = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        "Files",
     )
-    interval_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/multimotion-emotion-recognition/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/interval.csv"
-    gt_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/Files/Myfiles/Ground_truth_file/individual_ground_truth_full_video.csv"
-    
+    home_dir = os.path.join(files_path, "Myfiles")
+    relative_path = os.path.join(files_path, "Myfiles/all_healthy_part")
+    interval_path = os.path.join(files_path, "required_files/interval.csv")
+    gt_path = os.path.join(
+        files_path, "/Myfiles/Ground_truth_file/individual_ground_truth_full_video.csv"
+    )
+
     return home_dir, relative_path, interval_path, gt_path
 
 
