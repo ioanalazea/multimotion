@@ -19,7 +19,12 @@ from Quality_Signals import (
 )
 from final_model_pupil import interval_decesion_for_all_participants_split_videos
 
-interval_path = "D:/MASTER/Uni of Essex/Disseration/Hassan/multimotion-emotion-recognition/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/interval.csv"
+
+files_path = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Files"
+)
+interval_path = os.path.join(files_path, "required_files/interval.csv")
+
 mapping_data = {
     "HN_1-1": "HN_1",
     "HN_2-1": "HN_2_H",
@@ -75,19 +80,19 @@ def statistics_features(data_path, processed_data_path):
 
             df.dropna(axis=1, how="all", inplace=True)
             stimuli = df["SourceStimuliName"].unique()
-            
+
             # New pupil features
             pupil_arousal_data = (
                 interval_decesion_for_all_participants_split_videos.get_arousal_data(
                     filename
                 )
-            )            
-            
+            )
+
             # Features for whole video
             features = compute_features(
                 df, filename=filename, file_path=file_path, file_names=file_names
             )
-            
+
             # Features for interval
             # features = compute_features_interval(
             #     df,
@@ -97,12 +102,13 @@ def statistics_features(data_path, processed_data_path):
             #     file_names=file_names,
             # )
 
-
         df = pd.DataFrame(features)
         df["video"] = df["video"].replace(mapping_data)
 
         df_merged = df.merge(
-            pupil_arousal_data[["stimuli_name_1", "arousal_data", "Valence", "Arousal"]],
+            pupil_arousal_data[
+                ["stimuli_name_1", "arousal_data", "Valence", "Arousal"]
+            ],
             left_on="video",
             right_on="stimuli_name_1",
             how="left",
@@ -110,10 +116,10 @@ def statistics_features(data_path, processed_data_path):
 
         # Drop the helper column 'stimuli_name_1' from the merge
         df_merged = df_merged.drop(columns=["stimuli_name_1"])
-        
+
         # Renaming arousal_data to Pupil_size
         df_merged = df_merged.rename(columns={"arousal_data": "Pupil_size"})
-        
+
         path = processed_data_path + rf"\{filename}"
         df_merged.to_csv(path, index=False)
 

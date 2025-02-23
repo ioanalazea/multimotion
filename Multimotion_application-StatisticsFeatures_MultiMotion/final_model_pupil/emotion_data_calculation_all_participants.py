@@ -26,13 +26,40 @@ import gc
 import psutil
 
 # Function to clear memory
+import psutil
+import gc
+
 def clear_memory():
-    # Print current memory usage
-    print(f"Memory usage before clearing: {psutil.virtual_memory().percent}%")
+    """
+    Clears memory by triggering garbage collection and prints memory usage before and after.
+    """
+    
+    # Print current memory usage before clearing
+    memory_before = psutil.virtual_memory().percent
+    print(f"Memory usage before clearing: {memory_before}%")
+    
+    # Run garbage collection
+    gc.collect()
+    
+    # Print current memory usage after clearing
+    memory_after = psutil.virtual_memory().percent
+    print(f"Memory usage after clearing: {memory_after}%")
+    
+    # Provide feedback on garbage collection
+    if memory_before > memory_after:
+        print("Garbage collection reduced memory usage.")
+    else:
+        print("No significant change in memory usage.")
     
     # Collect garbage
     gc.collect()
+
+
 def find_and_set_header(df, start_index=31, expected_header_indicator='Expected Header Indicator'):
+    """
+    Locates and sets the header row in a DataFrame, and extracts respondent name.
+    """
+
     header = None
     for i in range(start_index, len(df)):
         row = df.iloc[i]
@@ -47,39 +74,42 @@ def find_and_set_header(df, start_index=31, expected_header_indicator='Expected 
     return df, header, respondent_name
 
 def process_csv_files(relative_path, output_path):
+    """
+    Main processing function that:
+    1. Processes eye tracking data for each participant
+    2. Calculates pupil size calibration using RGB color model
+    3. Analyzes video stimuli and predicts pupil sizes
+    4. Generates error metrics and scaled values
+    """
 
     # Clear memory at the start of your script
     clear_memory()
 
     # Get the user's home directory ---- this to be changes rep.txt
     home_dir=os.getcwd() + "/final_model_pupil"
-    interval_path =  "/required_files/interval.csv"
 
+    # files path
+    files_path =  os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'Files')  
 
+    all_pssobilities_lux_v4 = os.path.join(files_path, 'required_files/all_pssobilities_lux_v4.csv')
+    coefficients_file_r = os.path.join(files_path, 'required_files/red_coefficients.csv')
+    coefficients_file_b = os.path.join(files_path, 'required_files/blue_coefficients.csv')
+    coefficients_file_g = os.path.join(files_path, 'required_files/green_coefficients.csv')
+    coefficients_file_w = os.path.join(files_path, 'required_files/grey_coefficients.csv')
+    file_with_rgb_file_w = os.path.join(files_path, 'required_files/file_with_RGB_values.csv')
 
-    ## Directory containing CSV files
-    full_path = os.path.join(home_dir, relative_path)
-
-
-    file_path = os.path.join(home_dir +'/required_files/all_pssobilities_lux_v4.csv')
-
-    coefficients_file_r = os.path.join(home_dir +'/required_files/red_coefficients.csv')
-    coefficients_file_b = os.path.join(home_dir + '/required_files/blue_coefficients.csv')
-    coefficients_file_g = os.path.join(home_dir +'/required_files/green_coefficients.csv')
-    coefficients_file_w = os.path.join(home_dir + '/required_files/grey_coefficients.csv')
     print(coefficients_file_r)
 
     """ column name for participants """
     part_name = "Part_2"
 
-
-    # Step 2: Get the list of video file names from the folder
-    video_folder = 'D:/MASTER/Uni of Essex/Disseration/Hassan/trying/multimotion/Multimotion_application-StatisticsFeatures_MultiMotion/final_model_pupil/required_files/survey_stimuli'  # Replace with the actual folder path
-    video_files = [os.path.splitext(f)[0] for f in os.listdir(os.path.join(home_dir, video_folder)) if f.endswith(('.mp4', '.avi', '.mov'))]
-    df_list = []
-    for filename in os.listdir(full_path):
+    # Step 2: Get the list of video file names from the foldersurvey_stimuli
+    video_folder = os.path.join(files_path, 'survey_stimuli') 
+    print(os.listdir(video_folder))
+    video_files = [os.path.splitext(f)[0] for f in os.listdir(video_folder) if f.lower().endswith(('.mp4', '.avi', '.mov'))]
+    for filename in os.listdir(relative_path):
         if filename.endswith('.csv'):  # Check if the file is a CSV file
-            filepath = os.path.join(full_path, filename)
+            filepath = os.path.join(relative_path, filename)
 
             # Read the CSV file
             df = pd.read_csv(filepath, encoding='ISO-8859-1')
@@ -174,7 +204,7 @@ def process_csv_files(relative_path, output_path):
             
             """ save these data into csv """
             
-            test_images = pd.read_csv(os.path.join(home_dir + '/required_files/file_with_RGB_values.csv')) #original_data_23082024_all_laptop
+            test_images = pd.read_csv(file_with_rgb_file_w) #original_data_23082024_all_laptop
             
             test_images[part_name] = list(ps_27) + test_image_ps # imp: these are the value of calibration and single color test images which is required to recalibration function
             
@@ -185,22 +215,22 @@ def process_csv_files(relative_path, output_path):
             
             
             
-            PS_red = RGB_N.recalibration(lux_intensity, coefficients_file_r, file_path, test_images, 'red', 0, part_name) # 0 = 27 points calibration
-            PS_green = RGB_N.recalibration(lux_intensity, coefficients_file_g, file_path, test_images, 'green', 0, part_name)
-            PS_blue = RGB_N.recalibration(lux_intensity, coefficients_file_b, file_path, test_images, 'blue', 0, part_name)
-            PS_white = RGB_N.recalibration(lux_intensity, coefficients_file_w, file_path, test_images, 'white', 0, part_name)
+            PS_red = RGB_N.recalibration(lux_intensity, coefficients_file_r, all_pssobilities_lux_v4, test_images, 'red', 0, part_name) # 0 = 27 points calibration
+            PS_green = RGB_N.recalibration(lux_intensity, coefficients_file_g, all_pssobilities_lux_v4, test_images, 'green', 0, part_name)
+            PS_blue = RGB_N.recalibration(lux_intensity, coefficients_file_b, all_pssobilities_lux_v4, test_images, 'blue', 0, part_name)
+            PS_white = RGB_N.recalibration(lux_intensity, coefficients_file_w, all_pssobilities_lux_v4, test_images, 'white', 0, part_name)
             
             
             """ pupil size at maximum luminosity"""
             #ps_color_max = RGB_N.get_filtered_values(test_images, 100, 100, 100, part_name) 
             
-            lux_r = RGB_N.lux_function(lux_intensity, file_path, 'red')
+            lux_r = RGB_N.lux_function(lux_intensity, all_pssobilities_lux_v4, 'red')
             lux_r.append(100)
-            lux_g = RGB_N.lux_function(lux_intensity, file_path, 'green')
+            lux_g = RGB_N.lux_function(lux_intensity, all_pssobilities_lux_v4, 'green')
             lux_g.append(100)
-            lux_b = RGB_N.lux_function(lux_intensity, file_path, 'blue')
+            lux_b = RGB_N.lux_function(lux_intensity, all_pssobilities_lux_v4, 'blue')
             lux_b.append(100)
-            lux_w = RGB_N.lux_function(lux_intensity, file_path, 'white')
+            lux_w = RGB_N.lux_function(lux_intensity, all_pssobilities_lux_v4, 'white')
             lux_w.append(100)
             
             STL.append_based_on_last_values(PS_red)
@@ -230,13 +260,13 @@ def process_csv_files(relative_path, output_path):
                         pred_ps_lnr_cleaned = []
                         pred_ps_lnr_cleaned_0 = []        
                         print(video_file)
-                        #results = VEX.process_video_file(video_file, df, home_dir, video_folder, frames_folder,  popt_r, popt_g, popt_b, popt_w, file_path)
+                        #results = VEX.process_video_file(video_file, df, home_dir, video_folder, frames_folder,  popt_r, popt_g, popt_b, popt_w, all_pssobilities_lux_v4)
                         results = VEX.process_video_file_with_gaze_plot(video_file, df, home_dir, video_folder, frames_folder)
                         
                         
                         if results is not None:
                             
-                            results, ps_black = PPS.predict_ps(results, popt_r, popt_g, popt_b, popt_w, file_path)
+                            results, ps_black = PPS.predict_ps(results, popt_r, popt_g, popt_b, popt_w, all_pssobilities_lux_v4)
                         
                             
                             #linear regression 
