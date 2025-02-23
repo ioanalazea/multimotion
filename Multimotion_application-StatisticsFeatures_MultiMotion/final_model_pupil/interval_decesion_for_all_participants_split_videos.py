@@ -22,10 +22,10 @@ def define_paths():
     home_dir = os.path.join(files_path, "Myfiles")
     relative_path = os.path.join(files_path, "Myfiles/all_healthy_part")
     interval_path = os.path.join(files_path, "required_files/interval.csv")
-    gt_path = os.path.join(
-        files_path, "/Myfiles/Ground_truth_file/individual_ground_truth_full_video.csv"
-    )
 
+    gt_path = os.path.join(
+        files_path, "Myfiles/Ground_truth_file/individual_ground_truth_full_video.csv"
+    )
     return home_dir, relative_path, interval_path, gt_path
 
 
@@ -182,7 +182,9 @@ def get_arousal_data(filename):
 
     # all_data = pd.concat([process_participant(file, interval_data) for file in participant_files], ignore_index=True)
 
-    # WITHOUT INTERVALS
+    # INTERVALS END
+    
+    # WITHOUT INTERVALS (FULL VIDEO)
 
     all_data = pd.concat(
         [process_participant_without_interval(file) for file in participant_files],
@@ -223,6 +225,8 @@ def get_arousal_data(filename):
         "HP_8-1": "HP_8",
     }
 
+    # WITHOUT INTERVALS(FULL VIDEO) END
+    
     merged_df = merge_with_ground_truth(
         all_data, os.path.join(home_dir, gt_path), mapping_data
     )

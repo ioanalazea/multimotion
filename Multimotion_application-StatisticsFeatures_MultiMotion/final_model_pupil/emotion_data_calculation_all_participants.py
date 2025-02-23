@@ -96,6 +96,8 @@ def process_csv_files(relative_path, output_path):
     coefficients_file_b = os.path.join(files_path, 'required_files/blue_coefficients.csv')
     coefficients_file_g = os.path.join(files_path, 'required_files/green_coefficients.csv')
     coefficients_file_w = os.path.join(files_path, 'required_files/grey_coefficients.csv')
+    file_with_rgb_file_w = os.path.join(files_path, 'required_files/file_with_RGB_values.csv')
+
     print(coefficients_file_r)
 
     """ column name for participants """
@@ -202,7 +204,7 @@ def process_csv_files(relative_path, output_path):
             
             """ save these data into csv """
             
-            test_images = pd.read_csv(os.path.join(home_dir + '/required_files/file_with_RGB_values.csv')) #original_data_23082024_all_laptop
+            test_images = pd.read_csv(file_with_rgb_file_w) #original_data_23082024_all_laptop
             
             test_images[part_name] = list(ps_27) + test_image_ps # imp: these are the value of calibration and single color test images which is required to recalibration function
             
