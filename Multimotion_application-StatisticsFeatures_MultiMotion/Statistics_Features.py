@@ -23,7 +23,7 @@ from final_model_pupil import interval_decesion_for_all_participants_split_video
 files_path = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Files"
 )
-interval_path = os.path.join(files_path, "required_files/interval.csv")
+interval_path = os.path.join(files_path, "required_files/interval-full-videos.csv")
 
 mapping_data = {
     "HN_1-1": "HN_1",
@@ -89,18 +89,18 @@ def statistics_features(data_path, processed_data_path):
             )
 
             # Features for whole video
-            features = compute_features(
-                df, filename=filename, file_path=file_path, file_names=file_names
-            )
+            # features = compute_features(
+            #     df, filename=filename, file_path=file_path, file_names=file_names
+            # )
 
             # Features for interval
-            # features = compute_features_interval(
-            #     df,
-            #     stimuli=stimuli,
-            #     interval_data=interval_data,
-            #     filename=filename,
-            #     file_names=file_names,
-            # )
+            features = compute_features_interval(
+                df,
+                stimuli=stimuli,
+                interval_data=interval_data,
+                filename=filename,
+                file_names=file_names,
+            )
 
         df = pd.DataFrame(features)
         df["video"] = df["video"].replace(mapping_data)
@@ -125,21 +125,22 @@ def statistics_features(data_path, processed_data_path):
 
 
 # Filter Data by Stimulus
-def filter_data_by_stimulus(
-    data_participant, interval_data, stimulus, interval_stimulus
-):
+
+def filter_data_by_stimulus(data_participant, interval_data, stimulus, interval_stimulus):
     stimulus_data = data_participant[data_participant["SourceStimuliName"] == stimulus]
     start_times, end_times = [], []
 
-    stimulus_data["Timestamp"] = (
-        stimulus_data["Timestamp"] - stimulus_data["Timestamp"].min()
-    ) / 1000
+    # Normalize Timestamp
+    stimulus_data["Timestamp"] = (stimulus_data["Timestamp"] - stimulus_data["Timestamp"].min()) / 1000
 
-    for _, row in interval_data[
-        interval_data["stimuli_names"] == interval_stimulus
-    ].iterrows():
-        start_times.extend(map(float, row["interval_start"].split(";")))
-        end_times.extend(map(float, row["interval_end"].split(";")))
+    for _, row in interval_data[interval_data["stimuli_names"] == interval_stimulus].iterrows():
+        # Ensure values are strings before splitting
+        start_str = str(row["interval_start"])
+        end_str = str(row["interval_end"])
+
+        # Convert to float after splitting
+        start_times.extend(map(float, start_str.split(";") if ";" in start_str else [start_str]))
+        end_times.extend(map(float, end_str.split(";") if ";" in end_str else [end_str]))
 
     filtered_parts = [
         stimulus_data[
@@ -147,11 +148,9 @@ def filter_data_by_stimulus(
         ].reset_index(drop=True)
         for start, end in zip(start_times, end_times)
     ]
-    return (
-        pd.concat(filtered_parts, ignore_index=True)
-        if filtered_parts
-        else pd.DataFrame()
-    )
+
+    return pd.concat(filtered_parts, ignore_index=True) if filtered_parts else pd.DataFrame()
+
 
 
 def compute_features_interval(df, stimuli, interval_data, filename, file_names):
@@ -374,15 +373,6 @@ def compute_features_interval(df, stimuli, interval_data, filename, file_names):
 
 
 def compute_features(df, filename, file_path, file_names):
-    data_for_qualitySignals_FER = df[["SourceStimuliName", "Anger", "Timestamp"]]
-    # data_for_qualitySignals_PupilSize = df[['SourceStimuliName', 'ET_PupilLeft', 'Timestamp']]
-    # data_for_qualitySignals_HeartRate = df[['SourceStimuliName', 'IBI PPG ALG', 'Timestamp']]
-    # data_for_qualitySignals_gsr = df[['SourceStimuliName', 'Tonic Signal', 'Timestamp']]
-
-    # pupilSize_quality_signals = quality_signals_PupilSize(data_for_qualitySignals_PupilSize, filename)
-    # fer_quality_signals = quality_signals_FER(data_for_qualitySignals_FER, filename)
-    # heartRate_quality_signals = quality_signals_HeartRate(data_for_qualitySignals_HeartRate, filename)
-    # gsr_quality_signals = quality_signals_GSR(data_for_qualitySignals_gsr, filename)
 
     arousal_valence_pairs = output_vector_processor_path(file_path)
     all_values = arousal_valence_pairs
@@ -481,89 +471,5 @@ def compute_features(df, filename, file_path, file_names):
         "FER_Max_Arousal": max_arousal_values,
         "FER_Min_Valence": min_valence_values,
         "FER_Min_Arousal": min_arousal_values,
-        # "FER_Quality_Signals": fer_quality_signals["FER_Quality_Signals"],
-        # 'Pupil_after_mean_normalize': pupil_data['after_mean_normalize'],
-        # 'Pupil_after_min_normalize': pupil_data['after_min_normalize'],
-        # 'Pupil_after_max_normalize': pupil_data['after_max_normalize'],
-        # 'Pupil_after_skew_normalize': pupil_data['after_skew_normalize'],
-        # 'Pupil_after_kurtosis_normalize': pupil_data['after_kurtosis_normalize'],
-        # 'Pupil_after_std_normalize': pupil_data['after_std_normalize'],
-        # 'Pupil_before_mean_normalize': pupil_data['before_mean_normalize'],
-        # 'Pupil_before_min_normalize': pupil_data['before_min_normalize'],
-        # 'Pupil_before_max_normalize': pupil_data['before_max_normalize'],
-        # 'Pupil_before_skew_normalize': pupil_data['before_skew_normalize'],
-        # 'Pupil_before_kurtosis_normalize': pupil_data['before_kurtosis_normalize'],
-        # 'Pupil_before_std_normalize': pupil_data['before_std_normalize'],
-        # "Pupil_Quality_Signals": pupilSize_quality_signals['PupilSize_Quality_Signals'],
-        # 'ibi_after_mean_normalize': heartRate_data['ibi_after_mean_normalize'],
-        # 'ibi_after_min_normalize': heartRate_data['ibi_after_min_normalize'],
-        # 'ibi_after_max_normalize': heartRate_data['ibi_after_max_normalize'],
-        # 'ibi_after_skew_normalize': heartRate_data['ibi_after_skew_normalize'],
-        # 'ibi_after_kurtosis_normalize': heartRate_data['ibi_after_kurtosis_normalize'],
-        # 'ibi_after_std_normalize': heartRate_data['ibi_after_std_normalize'],
-        # 'ibi_before_mean_normalize': heartRate_data['ibi_before_mean_normalize'],
-        # 'ibi_before_min_normalize': heartRate_data['ibi_before_min_normalize'],
-        # 'ibi_before_max_normalize': heartRate_data['ibi_before_max_normalize'],
-        # 'ibi_before_skew_normalize': heartRate_data['ibi_before_skew_normalize'],
-        # 'ibi_before_kurtosis_normalize': heartRate_data['ibi_before_kurtosis_normalize'],
-        # 'ibi_before_std_normalize': heartRate_data['ibi_before_std_normalize'],
-        # 'heart_rate_after_mean_normalize': heartRate_data['heart_rate_after_mean_normalize'],
-        # 'heart_rate_after_min_normalize': heartRate_data['heart_rate_after_min_normalize'],
-        # 'heart_rate_after_max_normalize': heartRate_data['heart_rate_after_max_normalize'],
-        # 'heart_rate_after_skew_normalize': heartRate_data['heart_rate_after_skew_normalize'],
-        # 'heart_rate_after_kurtosis_normalize': heartRate_data['heart_rate_after_kurtosis_normalize'],
-        # 'heart_rate_after_std_normalize': heartRate_data['heart_rate_after_std_normalize'],
-        # 'heart_rate_before_mean_normalize': heartRate_data['heart_rate_before_mean_normalize'],
-        # 'heart_rate_before_min_normalize': heartRate_data['heart_rate_before_min_normalize'],
-        # 'heart_rate_before_max_normalize': heartRate_data['heart_rate_before_max_normalize'],
-        # 'heart_rate_before_skew_normalize': heartRate_data['heart_rate_before_skew_normalize'],
-        # 'heart_rate_before_kurtosis_normalize': heartRate_data['heart_rate_before_kurtosis_normalize'],
-        # 'heart_rate_before_std_normalize': heartRate_data['heart_rate_before_std_normalize'],
-        # 'ibi_after_rmssd_normalize': heartRate_data['ibi_after_rmssd_normalize'],
-        # 'ibi_after_sdnn_normalize': heartRate_data['ibi_after_sdnn_normalize'],
-        # 'ibi_before_rmssd_normalize': heartRate_data['ibi_before_rmssd_normalize'],
-        # 'ibi_before_sdnn_normalize': heartRate_data['ibi_before_sdnn_normalize'],
-        # "HeartRate_Quality_Signals": heartRate_quality_signals ['HeartRate_Quality_Signals'],
-        # 'phasic_signal_after_mean_normalize': GSR_data['phasic_signal_after_mean_normalize'],
-        # 'phasic_signal_after_median_normalize': GSR_data['phasic_signal_after_median_normalize'],
-        # 'phasic_signal_after_min_normalize': GSR_data['phasic_signal_after_min_normalize'],
-        # 'phasic_signal_after_max_normalize': GSR_data['phasic_signal_after_max_normalize'],
-        # 'phasic_signal_after_skew_normalize': GSR_data['phasic_signal_after_skew_normalize'],
-        # 'phasic_signal_after_kurtosis_normalize': GSR_data['phasic_signal_after_kurtosis_normalize'],
-        # 'phasic_signal_after_std_normalize': GSR_data['phasic_signal_after_std_normalize'],
-        # 'phasic_signal_after_variance_normalize': GSR_data['phasic_signal_after_variance_normalize'],
-        # 'phasic_signal_after_mean_energy_normalize': GSR_data['phasic_signal_after_mean_energy_normalize'],
-        # 'phasic_signal_after_peak_average_normalize': GSR_data['phasic_signal_after_peak_average_normalize'],
-        # 'phasic_signal_after_peak_per_minute_normalize': GSR_data['phasic_signal_after_peak_per_minute_normalize'],
-        # 'phasic_signal_before_mean_normalize': GSR_data['phasic_signal_before_mean_normalize'],
-        # 'phasic_signal_before_median_normalize': GSR_data['phasic_signal_before_median_normalize'],
-        # 'phasic_signal_before_min_normalize': GSR_data['phasic_signal_before_min_normalize'],
-        # 'phasic_signal_before_max_normalize': GSR_data['phasic_signal_before_max_normalize'],
-        # 'phasic_signal_before_skew_normalize': GSR_data['phasic_signal_before_skew_normalize'],
-        # 'phasic_signal_before_kurtosis_normalize': GSR_data['phasic_signal_before_kurtosis_normalize'],
-        # 'phasic_signal_before_std_normalize': GSR_data['phasic_signal_before_std_normalize'],
-        # 'phasic_signal_before_variance_normalize': GSR_data['phasic_signal_before_variance_normalize'],
-        # 'phasic_signal_before_mean_energy_normalize': GSR_data['phasic_signal_before_mean_energy_normalize'],
-        # 'phasic_signal_before_peak_average_normalize': GSR_data['phasic_signal_before_peak_average_normalize'],
-        # 'phasic_signal_before_peak_per_min_normalize': GSR_data['phasic_signal_before_peak_per_min_normalize'],
-        # 'tonic_signal_after_mean_normalize': GSR_data['tonic_signal_after_mean_normalize'],
-        # 'tonic_signal_after_median_normalize': GSR_data['tonic_signal_after_median_normalize'],
-        # 'tonic_signal_after_min_normalize': GSR_data['tonic_signal_after_min_normalize'],
-        # 'tonic_signal_after_max_normalize': GSR_data['tonic_signal_after_max_normalize'],
-        # 'tonic_signal_after_skew_normalize': GSR_data['tonic_signal_after_skew_normalize'],
-        # 'tonic_signal_after_kurtosis_normalize': GSR_data['tonic_signal_after_kurtosis_normalize'],
-        # 'tonic_signal_after_std_normalize': GSR_data['tonic_signal_after_std_normalize'],
-        # 'tonic_signal_after_variance_normalize': GSR_data['tonic_signal_after_variance_normalize'],
-        # 'tonic_signal_after_mean_energy_normalize': GSR_data['tonic_signal_after_mean_energy_normalize'],
-        # 'tonic_signal_before_mean_normalize': GSR_data['tonic_signal_before_mean_normalize'],
-        # 'tonic_signal_before_median_normalize': GSR_data['tonic_signal_before_median_normalize'],
-        # 'tonic_signal_before_min_normalize': GSR_data['tonic_signal_before_min_normalize'],
-        # 'tonic_signal_before_max_normalize': GSR_data['tonic_signal_before_max_normalize'],
-        # 'tonic_signal_before_skew_normalize': GSR_data['tonic_signal_before_skew_normalize'],
-        # 'tonic_signal_before_kurtosis_normalize': GSR_data['tonic_signal_before_kurtosis_normalize'],
-        # 'tonic_signal_before_std_normalize': GSR_data['tonic_signal_before_std_normalize'],
-        # 'tonic_signal_before_variance_normalize': GSR_data['tonic_signal_before_variance_normalize'],
-        # 'tonic_signal_before_mean_energy_normalize': GSR_data['tonic_signal_before_mean_energy_normalize'],
-        # 'GSR_Quality_signals': gsr_quality_signals['GSR_Quality_Signals']
     }
     return features
