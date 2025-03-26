@@ -3,20 +3,11 @@ from emotion_vector_processor import (
     output_vector_processor_path,
     video_emotion,
 )
-from Final_Code_Pupil_Dilation import pupil_statistics_data
-from gsr_feature_extraction import GSR_statisticsFeatures
-from Heart_Rate_code import heartRate_statistics_data
-from signalQualityGSR import GSRSignalQuality
+
 import pandas as pd
 import os
 import statistics as stats
 from scipy.stats import kurtosis
-from Quality_Signals import (
-    quality_signals_FER,
-    quality_signals_PupilSize,
-    quality_signals_HeartRate,
-    quality_signals_GSR,
-)
 from final_model_pupil import interval_decesion_for_all_participants_split_videos
 
 
@@ -26,102 +17,71 @@ files_path = os.path.join(
 interval_path = os.path.join(files_path, "required_files/interval-full-videos.csv")
 
 mapping_data = {
-    "HN_1-1": "HN_1",
-    "HN_2-1": "HN_2_H",
-    "HN_4-1": "HN_4",
-    "HN_5-1": "HN_5",
-    "HN_6-1": "HN_6",
-    "LP_3-1": "LP_3",
-    "LP_4-1": "LP_4",
-    "LP_6-1": "LP_6",
-    "LN_1-1": "LN_1",
-    "LN_2-1": "LN_2",
-    "LN_3-1": "LN_3",
-    "LN_4-1": "LN_4",
-    "LN_5-1": "LN_5",
-    "LN_6-1": "LN_6",
-    "LN_7-1": "LN_7_N",
-    "LN_8-1": "LN_9",
-    "HP_1-1": "HP_1_L",
-    "HP_2-1": "HP_2",
-    "HP_3-1": "HP_3_L",
-    "HP_4-1": "HP_4",
-    "HP_6-1": "HP_6",
-    "HP_7-1": "HP_7_H",
-    "HN_3-1": "HN_3_H",
-    "HN_8-1": "HN_9",
-    "HN_7-1": "HN_7",
-    "LP_1-1": "LP_1",
-    "LP_2-1": "LP_2",
-    "LP_5-1": "LP_5",
-    "LP_7-1": "LP_7",
-    "LP_8-1": "LP_9",
-    "HP_5-1": "HP_5",
-    "HP_8-1": "HP_9",
-    "HN_2-2": "HN_2_L",
-    "HN_3-2": "HN_3_L",
-    "HP_1-2": "HP_1_H",
-    "HP_3-2": "HP_3_H",
-    "HP_7-2": "HP_7_L",
-    "LN_7-2": "LN_7_P",
-}
-
+        'HN_1-1' : 'HN_1',         'HN_2-1' : 'HN_2_H',        'HN_4-1' : 'HN_4',        'HN_5-1' : 'HN_5',        'HN_6-1' : 'HN_6',        'LP_3-1' : 'LP_3',
+        'LP_4-1' : 'LP_4',       'LP_6-1' : 'LP_6',      'LN_1-1' : 'LN_1',      'LN_2-1' : 'LN_2',     'LN_3-1' : 'LN_3',     'LN_4-1' : 'LN_4',    'LN_5-1' : 'LN_5',
+        'LN_6-1' : 'LN_6',      'LN_7-1' : 'LN_7_N', 'LN_8-1' : 'LN_9',   'HP_1-1' : 'HP_1_L',  'HP_2-1' : 'HP_2', 'HP_3-1' : 'HP_3_L', 'HP_4-1' : 'HP_4', 'HP_6-1' : 'HP_6',
+        'HP_7-1' : 'HP_7_H', 'HN_3-1' : 'HN_3_H', 'HN_8-1' : 'HN_9', 'HN_7-1' : 'HN_7', 'LP_1-1' : 'LP_1',  'LP_2-1' : 'LP_2', 'LP_5-1' : 'LP_5', 'LP_7-1' : 'LP_7',
+        'LP_8-1' : 'LP_9',  'HP_5-1' : 'HP_5',  'HP_8-1' : 'HP_9',
+        'HN_2-2' : 'HN_2_L', 'HN_3-2' : 'HN_3_L',  'HP_1-2' : 'HP_1_H','HP_3-2' : 'HP_3_H', 'HP_7-2' : 'HP_7_L', 'LN_7-2' : 'LN_7_P',
+    }
 
 def statistics_features(data_path, processed_data_path):
     directory_path = data_path
+    
+    # Lists to store data from all files
+    all_fer_data = []
+    all_pupil_data = []
+
     # Load the interval data
     interval_data = pd.read_csv(interval_path)
 
     for filename in os.listdir(directory_path):
         if filename.endswith(".csv"):
             file_path = os.path.join(directory_path, filename)
-            file_names = []
             df = pd.read_csv(file_path)
 
-            df.dropna(axis=1, how="all", inplace=True)
             stimuli = df["SourceStimuliName"].unique()
 
-            # New pupil features
-            pupil_arousal_data = (
-                interval_decesion_for_all_participants_split_videos.get_arousal_data(
-                    filename
-                )
-            )
-
-            # Features for whole video
-            # features = compute_features(
-            #     df, filename=filename, file_path=file_path, file_names=file_names
-            # )
-
-            # Features for interval
-            features = compute_features_interval(
+            # Compute FER features
+            fer_features = compute_features_interval(
                 df,
                 stimuli=stimuli,
                 interval_data=interval_data,
                 filename=filename,
-                file_names=file_names,
+                file_names=[],
             )
 
-        df = pd.DataFrame(features)
-        df["video"] = df["video"].replace(mapping_data)
+            df_fer = pd.DataFrame(fer_features)
+            df_fer["participant"] = filename  # Add participant column
+            
+            # Renaming the videos
+            df_fer["video"] = df_fer["video"].replace(mapping_data)
 
-        df_merged = df.merge(
-            pupil_arousal_data[
-                ["stimuli_name_1", "arousal_data", "Valence", "Arousal"]
-            ],
-            left_on="video",
-            right_on="stimuli_name_1",
-            how="left",
-        )
+            all_fer_data.append(df_fer)
 
-        # Drop the helper column 'stimuli_name_1' from the merge
-        df_merged = df_merged.drop(columns=["stimuli_name_1"])
+            # Get pupil size data
+            pupil_arousal_data = interval_decesion_for_all_participants_split_videos.get_arousal_data(filename)
+            df_pupil = pd.DataFrame({
+                "participant": filename,
+                "video": pupil_arousal_data["Stimulus_Name"],
+                "Pupil_size": pupil_arousal_data["arousal_data"]
+            })
+            all_pupil_data.append(df_pupil)
 
-        # Renaming arousal_data to Pupil_size
-        df_merged = df_merged.rename(columns={"arousal_data": "Pupil_size"})
+    # Combine all data into single DataFrames
+    final_fer_df = pd.concat(all_fer_data, ignore_index=True)
+    final_pupil_df = pd.concat(all_pupil_data, ignore_index=True)
 
-        path = processed_data_path + rf"\{filename}"
-        df_merged.to_csv(path, index=False)
+    # Define file paths
+    fer_path = os.path.join(processed_data_path, "FER_features.csv")
+    pupil_path = os.path.join(processed_data_path, "Pupil_size.csv")
+
+    # Save as CSV
+    final_fer_df.to_csv(fer_path, index=False)
+    final_pupil_df.to_csv(pupil_path, index=False)
+
+    print(f"Saved FER features to {fer_path}")
+    print(f"Saved Pupil size data to {pupil_path}")
 
 
 # Filter Data by Stimulus
@@ -155,7 +115,6 @@ def filter_data_by_stimulus(data_participant, interval_data, stimulus, interval_
 
 def compute_features_interval(df, stimuli, interval_data, filename, file_names):
     splited_videos = ["HN_2-1", "HN_3-1", "HP_1-1", "HP_3-1", "HP_7-1", "LN_7-1"]  #
-
     features = []
     for stimulus in stimuli:
         if stimulus in splited_videos:
