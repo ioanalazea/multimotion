@@ -4,6 +4,7 @@ Created on Thu Nov 14 11:05:34 2024
 
 @author: zeelp
 """
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import os
@@ -21,12 +22,8 @@ def define_paths():
     )
     home_dir = os.path.join(files_path, "Myfiles")
     relative_path = os.path.join(files_path, "Myfiles/all_healthy_part")
-    interval_path = os.path.join(files_path, "required_files/interval-full-videos.csv")
 
-    gt_path = os.path.join(
-        files_path, "Myfiles/Ground_truth_file/individual_ground_truth.csv"
-    )
-    return home_dir, relative_path, interval_path, gt_path
+    return home_dir, relative_path
 
 
 def load_data(home_dir, relative_path, interval_path, filename):
@@ -149,23 +146,40 @@ def filter_data_by_stimulus(data_participant, interval_data, stimulus, interval_
 
 
 # Main
-def get_arousal_data(filename):
-    home_dir, relative_path, interval_path, gt_path = define_paths()
+def get_arousal_data(filename, interval_path):
+    home_dir, relative_path = define_paths()
     interval_data, participant_files = load_data(
         home_dir, relative_path, interval_path, filename
     )
 
+    # Define the full list of stimuli
+    stimuli_list = [
+        'HN_1', 'HN_2_H', 'HN_4', 'HN_5', 'HN_6', 'LP_3', 'LP_4', 'LP_6', 'LN_1', 'LN_2', 'LN_3', 'LN_4', 'LN_5', 
+        'LN_6', 'LN_7_N', 'LN_9', 'HP_1_L', 'HP_2', 'HP_3_L', 'HP_4', 'HP_6', 'HP_7_H', 'HN_3_H', 'HN_9', 'HN_7', 
+        'LP_1', 'LP_2', 'LP_5', 'LP_7', 'LP_9', 'HP_5', 'HP_9', 'HN_2_L', 'HN_3_L', 'HP_1_H', 'HP_3_H', 'HP_7_L', 'LN_7_P'
+    ]
+
     mapping_data = {
-        'HN_1-1' : 'HN_1',         'HN_2-1' : 'HN_2_H',        'HN_4-1' : 'HN_4',        'HN_5-1' : 'HN_5',        'HN_6-1' : 'HN_6',        'LP_3-1' : 'LP_3',
-        'LP_4-1' : 'LP_4',       'LP_6-1' : 'LP_6',      'LN_1-1' : 'LN_1',      'LN_2-1' : 'LN_2',     'LN_3-1' : 'LN_3',     'LN_4-1' : 'LN_4',    'LN_5-1' : 'LN_5',
-        'LN_6-1' : 'LN_6',      'LN_7-1' : 'LN_7_N', 'LN_8-1' : 'LN_9',   'HP_1-1' : 'HP_1_L',  'HP_2-1' : 'HP_2', 'HP_3-1' : 'HP_3_L', 'HP_4-1' : 'HP_4', 'HP_6-1' : 'HP_6',
-        'HP_7-1' : 'HP_7_H', 'HN_3-1' : 'HN_3_H', 'HN_8-1' : 'HN_9', 'HN_7-1' : 'HN_7', 'LP_1-1' : 'LP_1',  'LP_2-1' : 'LP_2', 'LP_5-1' : 'LP_5', 'LP_7-1' : 'LP_7',
-        'LP_8-1' : 'LP_9',  'HP_5-1' : 'HP_5',  'HP_8-1' : 'HP_9',
-        'HN_2-2' : 'HN_2_L', 'HN_3-2' : 'HN_3_L',  'HP_1-2' : 'HP_1_H','HP_3-2' : 'HP_3_H', 'HP_7-2' : 'HP_7_L', 'LN_7-2' : 'LN_7_P',
+        'HN_1-1' : 'HN_1', 'HN_2-1' : 'HN_2_H', 'HN_4-1' : 'HN_4', 'HN_5-1' : 'HN_5', 'HN_6-1' : 'HN_6', 'LP_3-1' : 'LP_3',
+        'LP_4-1' : 'LP_4', 'LP_6-1' : 'LP_6', 'LN_1-1' : 'LN_1', 'LN_2-1' : 'LN_2', 'LN_3-1' : 'LN_3', 'LN_4-1' : 'LN_4', 'LN_5-1' : 'LN_5',
+        'LN_6-1' : 'LN_6', 'LN_7-1' : 'LN_7_N', 'LN_8-1' : 'LN_9', 'HP_1-1' : 'HP_1_L', 'HP_2-1' : 'HP_2', 'HP_3-1' : 'HP_3_L', 'HP_4-1' : 'HP_4', 'HP_6-1' : 'HP_6',
+        'HP_7-1' : 'HP_7_H', 'HN_3-1' : 'HN_3_H', 'HN_8-1' : 'HN_9', 'HN_7-1' : 'HN_7', 'LP_1-1' : 'LP_1', 'LP_2-1' : 'LP_2', 'LP_5-1' : 'LP_5', 'LP_7-1' : 'LP_7',
+        'LP_8-1' : 'LP_9', 'HP_5-1' : 'HP_5', 'HP_8-1' : 'HP_9',
+        'HN_2-2' : 'HN_2_L', 'HN_3-2' : 'HN_3_L', 'HP_1-2' : 'HP_1_H','HP_3-2' : 'HP_3_H', 'HP_7-2' : 'HP_7_L', 'LN_7-2' : 'LN_7_P',
     }
 
-    all_data = pd.concat([process_participant(file, interval_data) for file in participant_files], ignore_index=True)
+    all_data = []
+
+    # Check if participant files exist
+    if not participant_files:
+        # If no participant files are found, return NaN values for each video
+        all_data = pd.DataFrame(
+            [[stimulus, np.nan, np.nan, filename.split('.')[0], np.nan] for stimulus in stimuli_list],
+            columns=["Stimulus_Name", "average_pupil_size", "corrected_pupil_size", "Participant", "arousal_data"]
+        )
+    else:
+        # Process the participant files
+        all_data = pd.concat([process_participant(file, interval_data) for file in participant_files], ignore_index=True)
 
     all_data["Stimulus_Name"] = all_data["Stimulus_Name"].replace(mapping_data)
-    # all_data.rename(columns={"Stimulus_Name": "stimuli_name_1"}, inplace=True)
     return all_data

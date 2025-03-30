@@ -21,14 +21,12 @@ from final_model_pupil import set_ps_at_100_lux as STL
 from final_model_pupil import Single_video_file_processor_extract_RGB as VEX
 from final_model_pupil import predict_ps_videoframe as PPS
 from final_model_pupil import NAN_imputations_manual as NI
+
 import os
 import gc
 import psutil
 
 # Function to clear memory
-import psutil
-import gc
-
 def clear_memory():
     """
     Clears memory by triggering garbage collection and prints memory usage before and after.

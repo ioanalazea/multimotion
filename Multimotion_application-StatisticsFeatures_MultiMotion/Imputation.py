@@ -4,24 +4,40 @@ import numpy as np
 import chardet
 
 
-def find_and_set_header(df, start_index=31, expected_header_indicator='Expected Header Indicator'):
+def find_and_set_header(
+    df, start_index=31, expected_header_indicator="Expected Header Indicator"
+):
     header = None
     for i in range(start_index, len(df)):
         row = df.iloc[i]
-        #take the respondent name from the file
-        respondent_name = df.iloc[1,1]
-        
+        # take the respondent name from the file
+        respondent_name = df.iloc[1, 1]
+
         if row[0] == expected_header_indicator:  # Check the first cell
             header = row
             df.columns = header  # Set this row as the header
-            df = df[i+1:].reset_index(drop=True)  # Slice the DataFrame from the next row
+            df = df[i + 1 :].reset_index(
+                drop=True
+            )  # Slice the DataFrame from the next row
             break
     return df, header, respondent_name
 
+
 def imputation_files(directory_path, output_path):
     required_columns = [
-        'Timestamp', 'SourceStimuliName', 'Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 
-        'Sadness', 'Surprise', 'ET_PupilLeft', 'ET_PupilRight', 'ET_GazeLeftx', 'ET_GazeLefty'
+        "Timestamp",
+        "SourceStimuliName",
+        "Anger",
+        "Contempt",
+        "Disgust",
+        "Fear",
+        "Joy",
+        "Sadness",
+        "Surprise",
+        "ET_PupilLeft",
+        "ET_PupilRight",
+        "ET_GazeLeftx",
+        "ET_GazeLefty",
     ]
 
     for filename in os.listdir(directory_path):
@@ -46,15 +62,49 @@ def imputation_files(directory_path, output_path):
                     df[col] = pd.NA  # Assign NaN if missing
 
             # Convert necessary columns to numeric
-            for col in ['Anger', 'Contempt', 'Disgust', 'Fear', 'Joy', 'Sadness', 'Surprise', 
-                        'ET_PupilLeft', 'ET_PupilRight', 'ET_GazeLeftx', 'ET_GazeLefty']:
-                df[col] = pd.to_numeric(df[col], errors='coerce')
+            for col in [
+                "Anger",
+                "Contempt",
+                "Disgust",
+                "Fear",
+                "Joy",
+                "Sadness",
+                "Surprise",
+                "ET_PupilLeft",
+                "ET_PupilRight",
+                "ET_GazeLeftx",
+                "ET_GazeLefty",
+            ]:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
+
+            # first_valid_index = df['Anger'].first_valid_index()
+            # df.at[first_valid_index, 'Anger'] = np.nan
+            # first_valid_index = df['Contempt'].first_valid_index()
+            # df.at[first_valid_index, 'Contempt'] = np.nan
+            # first_valid_index = df['Disgust'].first_valid_index()
+            # df.at[first_valid_index, 'Disgust'] = np.nan
+            # first_valid_index = df['Fear'].first_valid_index()
+            # df.at[first_valid_index, 'Fear'] = np.nan
+            # first_valid_index = df['Joy'].first_valid_index()
+            # df.at[first_valid_index, 'Joy'] = np.nan
+            # first_valid_index = df['Sadness'].first_valid_index()
+            # df.at[first_valid_index, 'Sadness'] = np.nan
+            # first_valid_index = df['Surprise'].first_valid_index()
+            # df.at[first_valid_index, 'Surprise'] = np.nan
+
+            df["Anger"] = df["Anger"].interpolate(method="linear")
+            df["Contempt"] = df["Contempt"].interpolate(method="linear")
+            df["Disgust"] = df["Disgust"].interpolate(method="linear")
+            df["Fear"] = df["Fear"].interpolate(method="linear")
+            df["Joy"] = df["Joy"].interpolate(method="linear")
+            df["Sadness"] = df["Sadness"].interpolate(method="linear")
+            df["Surprise"] = df["Surprise"].interpolate(method="linear")
 
             # Add respondent_name column
-            df['respondent_name'] = respondent_name
+            df["respondent_name"] = respondent_name
 
             # Keep only the required columns
-            columns_to_keep = required_columns + ['respondent_name']
+            columns_to_keep = required_columns + ["respondent_name"]
             df = df[columns_to_keep]
 
             # Save the processed file

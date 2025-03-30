@@ -1,6 +1,6 @@
 {
   "data_files": "Files/Myfiles/Imputated files",
-  "features_files": "Files/Myfiles/Features-testing",
+  "features_files": "Files/Myfiles/Features-testing/Intervals",
   "combined_file": "Files/Processed_files/Features file/combined features",
   "ground_truth_file": "Files/Processed_files/Ground_truth_file/individual_ground_truth_full_video.csv",
   "merge_file": "Files/Processed_files/merge Files",
