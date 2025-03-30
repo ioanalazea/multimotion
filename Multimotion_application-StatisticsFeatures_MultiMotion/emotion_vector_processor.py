@@ -165,7 +165,6 @@ def output_vector_processor(df, stimulus):
 
 def output_vector_processor_path(path):
 
-
     # Load the emotion data from a CSV file
     df = pd.read_csv(path)
 

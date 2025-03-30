@@ -1,10 +1,8 @@
 import json
 import os
 from Statistics_Features import statistics_features
-from Combining_all_Statistics_Features import combining_statistics_features
 from merge_files import merge_file
 from Imputation import imputation_files
-from best_features import best_features
 from final_model_pupil.emotion_data_calculation_all_participants import process_csv_files
 
 # Load repository paths dynamically
@@ -37,10 +35,8 @@ def main():
         print("\n" + "=" * 50)
         print("Choose a function:")
         print("0. Imputation files")
-        print("1. Convert Data File into features matrix")
-        print("2. Combine all features data files")
+        print("1. Extract features (FER and pupil arousal)")
         print("3. Merge all data with Ground Truth & GSR Signals to noise ratio")
-        print("4. Extract Best features")
         print("5. Extract pupil features")
         print("6. Exit")
         print("=" * 50)
@@ -68,18 +64,6 @@ def main():
                 statistics_features(repository_data["data_files"], repository_data["features_files"])
             else:
                 continue
-
-        elif choice == "2":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Features Files Path: {repository_data['features_files']}")
-            print(f"  - Combined File Output Path: {repository_data['combined_file']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                combining_statistics_features(repository_data["features_files"], repository_data["combined_file"])
-            else:
-                continue
-
         elif choice == "3":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Combined Features File: {repository_data['combined_file']}")
@@ -93,18 +77,6 @@ def main():
                            repository_data["merge_file"], repository_data["gsr_signal_noise"])
             else:
                 continue
-
-        elif choice == "4":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Merged File Path: {repository_data['merge_file']}")
-            print(f"  - Best Features Output Path: {repository_data['best_features']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                best_features(repository_data["merge_file"], repository_data["best_features"])
-            else:
-                continue
-
         elif choice == "5":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Initial Data Files Path: {repository_data['data_files']}")
