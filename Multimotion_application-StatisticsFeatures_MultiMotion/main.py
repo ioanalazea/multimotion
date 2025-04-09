@@ -37,7 +37,7 @@ def main():
         print("0. Imputation files")
         print("1. Extract features (FER and pupil arousal)")
         print("2. Merge all data with Ground Truth")
-        print("3. Extract pupil features")
+        print("3. Extract pupil data features (for timestamps)")
         print("4. Exit")
         print("=" * 50)
 
@@ -45,8 +45,8 @@ def main():
 
         if choice == "0":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Data Files Path: {repository_data['data_files']}")
-            print(f"  - Imputed Files Output Path: {repository_data['imputation_files']}")
+            print(f"  - Raw Files Input Path: {repository_data['raw_files']}")
+            print(f"  - Imputated Files Output Path: {repository_data['imputation_files']}")
             
             choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
@@ -56,7 +56,8 @@ def main():
 
         elif choice == "1":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Data Files Path: {repository_data['data_files']}")
+            print(f"  - Data Files Input Path: {repository_data['data_files']}")
+            print(f"  - Pupil Files Input Path (needed to compute pupil_size): {repository_data['pupil_data']}")
             print(f"  - Features Output Path: {repository_data['features_files']}")
 
             choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
@@ -68,13 +69,11 @@ def main():
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Combined Features File: {repository_data['combined_file']}")
             print(f"  - Ground Truth File: {repository_data['ground_truth_file']}")
-            print(f"  - Merged File Output Path: {repository_data['merge_file']}")
-            print(f"  - GSR Quality Signals Path: {repository_data['gsr_signal_noise']}")
-
             choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
-                           repository_data["merge_file"], repository_data["gsr_signal_noise"])
+                print(choice_2)
+                # merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
+                #            repository_data["merge_file"], repository_data["gsr_signal_noise"])
             else:
                 continue
         elif choice == "3":
