@@ -101,7 +101,7 @@ def extract_pupil_data(directory_path, interval_path, pupil_data_path, processed
 
     for filename in os.listdir(directory_path):
         if filename.endswith(".csv"):
-            print("\nExtracting Pupil Data from file:", filename, "\n")
+            print("\nExtracting Pupil Size from file:", filename, "\n")
 
             # Get pupil size data
             pupil_arousal_data = interval_decesion_for_all_participants_split_videos.get_arousal_data(filename, interval_path, pupil_data_path)
