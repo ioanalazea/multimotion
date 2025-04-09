@@ -1,8 +1,4 @@
-from emotion_vector_processor import (
-    output_vector_processor,
-    output_vector_processor_path,
-    video_emotion,
-)
+from emotion_vector_processor import output_vector_processor
 
 import pandas as pd
 import os
@@ -14,7 +10,7 @@ from final_model_pupil import interval_decesion_for_all_participants_split_video
 files_path = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Files"
 )
-interval_path = os.path.join(files_path, "required_files/interval-splitted-videos.csv")
+interval_path = os.path.join(files_path, "required_files/interval-splitted-videos.csv")   #HERE IF I CAN TRY TO PUT IN IN JSON FILE
 
 mapping_data = {
     "HN_1-1": "HN_1",
@@ -58,12 +54,9 @@ mapping_data = {
 }
 
 
-def statistics_features(data_path, processed_data_path, pupil_data_path):
-    directory_path = data_path
-
-    # Lists to store data from all files
+# Function to handle FER feature extraction
+def extract_fer_features(directory_path, interval_path, processed_data_path, mapping_data):
     all_fer_data = []
-    all_pupil_data = []
 
     # Load the interval data
     interval_data = pd.read_csv(interval_path)
@@ -72,7 +65,7 @@ def statistics_features(data_path, processed_data_path, pupil_data_path):
         if filename.endswith(".csv"):
             file_path = os.path.join(directory_path, filename)
             df = pd.read_csv(file_path)
-            print("\nExtracting features from file:", filename, "\n")
+            print("\nExtracting FER features from file:", filename, "\n")
             stimuli = df["SourceStimuliName"].unique()
 
             # Compute FER features
@@ -85,9 +78,7 @@ def statistics_features(data_path, processed_data_path, pupil_data_path):
             )
 
             df_fer = pd.DataFrame(fer_features)
-            participant_name = os.path.splitext(filename)[0].split("_")[
-                1
-            ]  # Extracts participant code
+            participant_name = os.path.splitext(filename)[0].split("_")[1]  # Extracts participant code
 
             df_fer["participant"] = participant_name  # Add participant column
 
@@ -96,12 +87,27 @@ def statistics_features(data_path, processed_data_path, pupil_data_path):
 
             all_fer_data.append(df_fer)
 
+    # Combine all data into a single DataFrame
+    final_fer_df = pd.concat(all_fer_data, ignore_index=True)
+
+    # Define file path for FER features and save as CSV
+    fer_path = os.path.join(processed_data_path, "FER_features.csv")
+    final_fer_df.to_csv(fer_path, index=False)
+    print(f"Saved FER features to {fer_path}")
+
+# Function to handle pupil size data extraction
+def extract_pupil_data(directory_path, interval_path, pupil_data_path, processed_data_path):
+    all_pupil_data = []
+
+    for filename in os.listdir(directory_path):
+        if filename.endswith(".csv"):
+            print("\nExtracting Pupil Data from file:", filename, "\n")
+
             # Get pupil size data
-            pupil_arousal_data = (
-                interval_decesion_for_all_participants_split_videos.get_arousal_data(
-                    filename, interval_path, pupil_data_path
-                )
-            )
+            pupil_arousal_data = interval_decesion_for_all_participants_split_videos.get_arousal_data(filename, interval_path, pupil_data_path)
+
+            participant_name = os.path.splitext(filename)[0].split("_")[1]  # Extracts participant code
+
             df_pupil = pd.DataFrame(
                 {
                     "participant": participant_name,
@@ -111,25 +117,35 @@ def statistics_features(data_path, processed_data_path, pupil_data_path):
             )
             all_pupil_data.append(df_pupil)
 
-    # Combine all data into single DataFrames
-    final_fer_df = pd.concat(all_fer_data, ignore_index=True)
+    # Combine all pupil data into a single DataFrame
     final_pupil_df = pd.concat(all_pupil_data, ignore_index=True)
 
-    # Define file paths
-    fer_path = os.path.join(processed_data_path, "FER_features.csv")
+    # Define file path for pupil size data and save as CSV
     pupil_path = os.path.join(processed_data_path, "Pupil_size.csv")
-
-    # Save as CSV
-    final_fer_df.to_csv(fer_path, index=False)
     final_pupil_df.to_csv(pupil_path, index=False)
-
-    # print(f"Saved FER features to {fer_path}")
     print(f"Saved Pupil size data to {pupil_path}")
+
+# Main function to prompt the user for their choice
+def statistics_features(data_path, processed_data_path, pupil_data_path):
+    print("\nWhat do you want to process?")
+    print("1. Extract FER features only")
+    print("2. Extract Pupil size data only")
+    print("3. Extract both FER features and Pupil size data")
+
+    choice = input("Enter your choice (1/2/3): ")
+
+    if choice == "1":
+        extract_fer_features(data_path, interval_path, processed_data_path, mapping_data)
+    elif choice == "2":
+        extract_pupil_data(data_path, interval_path, pupil_data_path, processed_data_path)
+    elif choice == "3":
+        extract_fer_features(data_path, interval_path, processed_data_path, mapping_data)
+        extract_pupil_data(data_path, interval_path, pupil_data_path, processed_data_path)
+    else:
+        print("Invalid choice. Please select a valid option.")
 
 
 # Filter Data by Stimulus
-
-
 def filter_data_by_stimulus(
     data_participant, interval_data, stimulus, interval_stimulus
 ):
