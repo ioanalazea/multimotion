@@ -14,7 +14,7 @@ from final_model_pupil import interval_decesion_for_all_participants_split_video
 files_path = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Files"
 )
-interval_path = os.path.join(files_path, "required_files/interval.csv")
+interval_path = os.path.join(files_path, "required_files/interval-splitted-videos.csv")
 
 mapping_data = {
     "HN_1-1": "HN_1",
@@ -58,7 +58,7 @@ mapping_data = {
 }
 
 
-def statistics_features(data_path, processed_data_path):
+def statistics_features(data_path, processed_data_path, pupil_data_path):
     directory_path = data_path
 
     # Lists to store data from all files
@@ -75,31 +75,31 @@ def statistics_features(data_path, processed_data_path):
             print("\nExtracting features from file:", filename,"\n")
             stimuli = df["SourceStimuliName"].unique()
 
-            # Compute FER features
-            fer_features = compute_features_interval(
-                df,
-                stimuli=stimuli,
-                interval_data=interval_data,
-                filename=filename,
-                file_names=[],
-            )
+            # # Compute FER features
+            # fer_features = compute_features_interval(
+            #     df,
+            #     stimuli=stimuli,
+            #     interval_data=interval_data,
+            #     filename=filename,
+            #     file_names=[],
+            # )
 
-            df_fer = pd.DataFrame(fer_features)
+            # df_fer = pd.DataFrame(fer_features)
             participant_name = os.path.splitext(filename)[0].split("_")[
                 1
             ]  # Extracts participant code
 
-            df_fer["participant"] = participant_name  # Add participant column
+            # df_fer["participant"] = participant_name  # Add participant column
 
-            # Renaming the videos
-            df_fer["video"] = df_fer["video"].replace(mapping_data)
+            # # Renaming the videos
+            # df_fer["video"] = df_fer["video"].replace(mapping_data)
 
-            all_fer_data.append(df_fer)
+            # all_fer_data.append(df_fer)
 
             # Get pupil size data
             pupil_arousal_data = (
                 interval_decesion_for_all_participants_split_videos.get_arousal_data(
-                    filename, interval_path
+                    filename, interval_path, pupil_data_path
                 )
             )
             df_pupil = pd.DataFrame(
@@ -112,18 +112,18 @@ def statistics_features(data_path, processed_data_path):
             all_pupil_data.append(df_pupil)
 
     # Combine all data into single DataFrames
-    final_fer_df = pd.concat(all_fer_data, ignore_index=True)
+    # final_fer_df = pd.concat(all_fer_data, ignore_index=True)
     final_pupil_df = pd.concat(all_pupil_data, ignore_index=True)
 
     # Define file paths
-    fer_path = os.path.join(processed_data_path, "FER_features.csv")
+    # fer_path = os.path.join(processed_data_path, "FER_features.csv")
     pupil_path = os.path.join(processed_data_path, "Pupil_size.csv")
 
     # Save as CSV
-    final_fer_df.to_csv(fer_path, index=False)
+    # final_fer_df.to_csv(fer_path, index=False)
     final_pupil_df.to_csv(pupil_path, index=False)
 
-    print(f"Saved FER features to {fer_path}")
+    # print(f"Saved FER features to {fer_path}")
     print(f"Saved Pupil size data to {pupil_path}")
 
 

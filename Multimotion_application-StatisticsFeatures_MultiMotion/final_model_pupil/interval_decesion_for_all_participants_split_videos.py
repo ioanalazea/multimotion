@@ -21,12 +21,11 @@ def define_paths():
         "Files",
     )
     home_dir = os.path.join(files_path, "Myfiles")
-    relative_path = os.path.join(files_path, "Myfiles/all_healthy_part")
+                                                                         
+    return home_dir
 
-    return home_dir, relative_path
 
-
-def load_data(home_dir, relative_path, interval_path, filename):
+def load_data(home_dir, pupil_data_path, interval_path, filename):
     # Extract the 5-character participant code from the filename
     participant_code = filename.split("_")[1][:5]  # Assumes the format "XXX_YYYYY.csv"
 
@@ -35,8 +34,8 @@ def load_data(home_dir, relative_path, interval_path, filename):
 
     # Filter participant files that match the 5-character code
     participant_files = [
-        os.path.join(home_dir, relative_path, f)
-        for f in os.listdir(os.path.join(home_dir, relative_path))
+        os.path.join(home_dir, pupil_data_path, f)
+        for f in os.listdir(os.path.join(home_dir, pupil_data_path))
         if f.endswith(".csv") and participant_code in f
     ]
 
@@ -49,7 +48,7 @@ def process_participant(file, interval_data):
     part_name = os.path.splitext(os.path.basename(file))[0]
     stimuli = data_participant["stimuli"].unique()
 
-    splited_videos = ["HN_2-1", "HN_3-1", "HP_1-1", "HP_3-1", "HP_7-1", "LN_7-1"]  #
+    splited_videos = ["HN_2-1", "HN_3-1", "HP_1-1", "HP_3-1", "HP_7-1", "LN_7-1"]
 
     stimuli_data = []
     for stimulus in stimuli:
@@ -146,10 +145,10 @@ def filter_data_by_stimulus(data_participant, interval_data, stimulus, interval_
 
 
 # Main
-def get_arousal_data(filename, interval_path):
-    home_dir, relative_path = define_paths()
+def get_arousal_data(filename, interval_path, pupil_data_path):
+    home_dir = define_paths()
     interval_data, participant_files = load_data(
-        home_dir, relative_path, interval_path, filename
+        home_dir, pupil_data_path, interval_path, filename
     )
 
     # Define the full list of stimuli

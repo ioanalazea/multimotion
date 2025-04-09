@@ -36,9 +36,9 @@ def main():
         print("Choose a function:")
         print("0. Imputation files")
         print("1. Extract features (FER and pupil arousal)")
-        print("3. Merge all data with Ground Truth & GSR Signals to noise ratio")
-        print("5. Extract pupil features")
-        print("6. Exit")
+        print("2. Merge all data with Ground Truth")
+        print("3. Extract pupil features")
+        print("4. Exit")
         print("=" * 50)
 
         choice = input("Enter the number of the function you want to choose: ")
@@ -61,10 +61,10 @@ def main():
 
             choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
             if choice_2 == "1":
-                statistics_features(repository_data["data_files"], repository_data["features_files"])
+                statistics_features(repository_data["data_files"], repository_data["features_files"],  repository_data["pupil_data"])
             else:
                 continue
-        elif choice == "3":
+        elif choice == "2":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Combined Features File: {repository_data['combined_file']}")
             print(f"  - Ground Truth File: {repository_data['ground_truth_file']}")
@@ -77,7 +77,7 @@ def main():
                            repository_data["merge_file"], repository_data["gsr_signal_noise"])
             else:
                 continue
-        elif choice == "5":
+        elif choice == "3":
             print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
             print(f"  - Initial Data Files Path: {repository_data['data_files']}")
             print(f"  - Pupil Data Output Path: {repository_data['pupil_data']}")
@@ -88,7 +88,7 @@ def main():
             else:
                 continue
 
-        elif choice == "6":
+        elif choice == "4":
             print("Exiting program...")
             break
 
