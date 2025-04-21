@@ -60,6 +60,7 @@ def extract_fer_features(directory_path, interval_path, processed_data_path, map
 
     # Load the interval data
     interval_data = pd.read_csv(interval_path)
+    print("Now extracting for ", interval_path,"Change if you want full/intervals.\n\n")
 
     for filename in os.listdir(directory_path):
         if filename.endswith(".csv"):

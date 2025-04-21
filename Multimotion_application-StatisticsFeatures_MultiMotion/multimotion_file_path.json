@@ -1,8 +1,8 @@
 {
-  "raw_files": "Files/Myfiles/Raw files",
-  "data_files": "Files/Myfiles/Imputated files",
-  "features_files": "Files/Myfiles/Features-testing/Intervals",
+  "raw_files": "Files/Myfiles/Unhealthy/Raw files",
+  "data_files": "Files/Myfiles/Unhealthy/Imputated files",
+  "features_files": "Files/Myfiles/Unhealthy/Features/Intervals",
   "ground_truth_file": "Files/Processed_files/Ground_truth_file/individual_ground_truth.csv",
-  "imputation_files": "Files/Myfiles/Imputated files/",
-  "pupil_data": "Files/Myfiles/Pupil features/"
+  "imputation_files": "Files/Myfiles/Unhealthy/Imputated files/",
+  "pupil_data": "Files/Myfiles/Unhealthy/Pupil features/"
 }

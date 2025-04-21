@@ -44,7 +44,7 @@ def handle_imputation(repository_data):
     
     choice_2 = input("\nPress 1 to continue with imputation, or any other key to go back: ")
     if choice_2 == "1":
-        imputation_files(repository_data["data_files"], repository_data["imputation_files"])
+        imputation_files(repository_data["raw_files"], repository_data["imputation_files"])
     else:
         print("Going back to the main menu...")
 
