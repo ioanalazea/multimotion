@@ -114,6 +114,7 @@ class EmotionVectorProcessor:
         # for stimulus, emotion in self.video_emotion.items():
         extracted_group = self.data[
                 ["Anger", "Contempt", "Disgust", "Fear", "Joy", "Sadness", "Surprise"]]
+        extracted_group = extracted_group.copy()  # Ensure it's a copy
         extracted_group.dropna(axis=0, how="any", inplace=True)
         extracted_group.reset_index(drop=True, inplace=True)
         extracted_group = extracted_group.astype("float")
@@ -163,7 +164,6 @@ def output_vector_processor(df, stimulus):
 
 
 def output_vector_processor_path(path):
-
 
     # Load the emotion data from a CSV file
     df = pd.read_csv(path)

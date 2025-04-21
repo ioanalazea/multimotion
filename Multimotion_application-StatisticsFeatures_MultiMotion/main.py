@@ -1,10 +1,8 @@
 import json
 import os
 from Statistics_Features import statistics_features
-from Combining_all_Statistics_Features import combining_statistics_features
 from merge_files import merge_file
 from Imputation import imputation_files
-from best_features import best_features
 from final_model_pupil.emotion_data_calculation_all_participants import process_csv_files
 
 # Load repository paths dynamically
@@ -28,98 +26,84 @@ def load_paths():
         print("Error: 'multimotion_file_path.json' is not properly formatted.")
         exit(1)
 
+def display_menu():
+    print("\n" + "=" * 50)
+    print("Welcome to the Data Processing Tool!")
+    print("Please choose a function by entering the corresponding number:\n")
+    print("0. Imputation of Missing Data Files")
+    print("1. Feature Extraction (FER and Pupil Arousal)")
+    print("2. Merge Data with Ground Truth")
+    print("3. Extract Pupil Data Features (for timestamps)")
+    print("4. Exit the Program")
+    print("=" * 50)
+
+def handle_imputation(repository_data):
+    print("\nImputation - Please ensure the following paths are correctly configured:")
+    print(f"  - Raw Data Input Path: {repository_data['raw_files']}")
+    print(f"  - Imputed Data Output Path: {repository_data['imputation_files']}")
+    
+    choice_2 = input("\nPress 1 to continue with imputation, or any other key to go back: ")
+    if choice_2 == "1":
+        imputation_files(repository_data["raw_files"], repository_data["imputation_files"])
+    else:
+        print("Going back to the main menu...")
+
+def handle_feature_extraction(repository_data):
+    print("\nFeature Extraction - Please ensure the following paths are correctly configured:")
+    print(f"  - Data Input Path: {repository_data['data_files']}")
+    print(f"  - Pupil Data Input Path (for pupil size computation): {repository_data['pupil_data']}")
+    print(f"  - Features Output Path: {repository_data['features_files']}")
+
+    choice_2 = input("\nPress 1 to continue with feature extraction, or any other key to go back: ")
+    if choice_2 == "1":
+        statistics_features(repository_data["data_files"], repository_data["features_files"], repository_data["pupil_data"])
+    else:
+        print("Going back to the main menu...")
+
+def handle_merge_data(repository_data):
+    print("\nMerge Data - Please ensure the following paths are correctly configured:")
+    print(f"  - Combined Features File Path: {repository_data['combined_file']}")
+    print(f"  - Ground Truth File Path: {repository_data['ground_truth_file']}")
+
+    choice_2 = input("\nPress 1 to continue with data merging, or any other key to go back: ")
+    if choice_2 == "1":
+        print("Merging data with ground truth...")
+        # Uncomment the line below once the function is ready
+        # merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
+        #            repository_data["merge_file"], repository_data["gsr_signal_noise"])
+    else:
+        print("Going back to the main menu...")
+
+def handle_pupil_data_extraction(repository_data):
+    print("\nPupil Data Extraction - Please ensure the following paths are correctly configured:")
+    print(f"  - Data Input Path: {repository_data['data_files']}")
+    print(f"  - Pupil Data Output Path: {repository_data['pupil_data']}")
+
+    choice_2 = input("\nPress 1 to continue with pupil data extraction, or any other key to go back: ")
+    if choice_2 == "1":
+        process_csv_files(repository_data["data_files"], repository_data["pupil_data"])
+    else:
+        print("Going back to the main menu...")
+
 def main():
     repository_data = load_paths()
 
-    print(repository_data)
-    
     while True:
-        print("\n" + "=" * 50)
-        print("Choose a function:")
-        print("0. Imputation files")
-        print("1. Convert Data File into features matrix")
-        print("2. Combine all features data files")
-        print("3. Merge all data with Ground Truth & GSR Signals to noise ratio")
-        print("4. Extract Best features")
-        print("5. Extract pupil features")
-        print("6. Exit")
-        print("=" * 50)
+        display_menu()
 
         choice = input("Enter the number of the function you want to choose: ")
 
         if choice == "0":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Data Files Path: {repository_data['data_files']}")
-            print(f"  - Imputed Files Output Path: {repository_data['imputation_files']}")
-            
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                imputation_files(repository_data["data_files"], repository_data["imputation_files"])
-            else:
-                continue
-
+            handle_imputation(repository_data)
         elif choice == "1":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Data Files Path: {repository_data['data_files']}")
-            print(f"  - Features Output Path: {repository_data['features_files']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                statistics_features(repository_data["data_files"], repository_data["features_files"])
-            else:
-                continue
-
+            handle_feature_extraction(repository_data)
         elif choice == "2":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Features Files Path: {repository_data['features_files']}")
-            print(f"  - Combined File Output Path: {repository_data['combined_file']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                combining_statistics_features(repository_data["features_files"], repository_data["combined_file"])
-            else:
-                continue
-
+            handle_merge_data(repository_data)
         elif choice == "3":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Combined Features File: {repository_data['combined_file']}")
-            print(f"  - Ground Truth File: {repository_data['ground_truth_file']}")
-            print(f"  - Merged File Output Path: {repository_data['merge_file']}")
-            print(f"  - GSR Quality Signals Path: {repository_data['gsr_signal_noise']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
-                           repository_data["merge_file"], repository_data["gsr_signal_noise"])
-            else:
-                continue
-
+            handle_pupil_data_extraction(repository_data)
         elif choice == "4":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Merged File Path: {repository_data['merge_file']}")
-            print(f"  - Best Features Output Path: {repository_data['best_features']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                best_features(repository_data["merge_file"], repository_data["best_features"])
-            else:
-                continue
-
-        elif choice == "5":
-            print("\nPlease ensure that 'multimotion_file_path.json' is properly configured and that the data is available in the 'Files' folder.")
-            print(f"  - Initial Data Files Path: {repository_data['data_files']}")
-            print(f"  - Pupil Data Output Path: {repository_data['pupil_data']}")
-
-            choice_2 = input("\nPress 1 to continue, or any other number to go back: ")
-            if choice_2 == "1":
-                process_csv_files(repository_data["data_files"], repository_data["pupil_data"])
-            else:
-                continue
-
-        elif choice == "6":
-            print("Exiting program...")
+            print("Exiting the program... Goodbye!")
             break
-
         else:
             print("Invalid choice. Please enter a valid option.")
 
