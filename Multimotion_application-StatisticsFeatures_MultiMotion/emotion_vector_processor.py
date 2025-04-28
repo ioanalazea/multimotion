@@ -70,14 +70,26 @@ class EmotionVectorProcessor:
 
         # Iterate through the emotion data and compute the emotion vectors
         for row in emotion_data.values:
+            xs = []
+            ys = []
+
             for i, intensity in enumerate(row):
                 emotion = columns[i]
                 angle = self.EMOTION_ANGLES[emotion]
                 magnitude = float(intensity) / 100
                 x, y = self.polar_to_cartesian(magnitude, angle)
-                vectors.append((x, y))
+                xs.append(x)
+                ys.append(y)
+                #vectors.append((x, y))
+                
+            sum_abs_x = np.sum(np.abs(xs))**2
+            sum_abs_y = np.sum(np.abs(ys))**2
 
-            x_sum, y_sum = self.add_vectors(vectors)
+            xs = xs * (np.abs(xs)**2 / sum_abs_x)
+            ys = ys * (np.abs(ys)**2 / sum_abs_y)
+
+            # x_sum, y_sum = self.add_vectors(vectors)
+            x_sum, y_sum = self.add_vectors(list(zip(xs, ys)))
 
             # Clip the vector components to a range of [-1, 1] and normalize the vector if it lies outside the unit circle
             # x_sum = np.clip(x_sum, -1, 1)
