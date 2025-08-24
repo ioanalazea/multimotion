@@ -77,21 +77,6 @@ def imputation_files(directory_path, output_path):
             ]:
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
-            # first_valid_index = df['Anger'].first_valid_index()
-            # df.at[first_valid_index, 'Anger'] = np.nan
-            # first_valid_index = df['Contempt'].first_valid_index()
-            # df.at[first_valid_index, 'Contempt'] = np.nan
-            # first_valid_index = df['Disgust'].first_valid_index()
-            # df.at[first_valid_index, 'Disgust'] = np.nan
-            # first_valid_index = df['Fear'].first_valid_index()
-            # df.at[first_valid_index, 'Fear'] = np.nan
-            # first_valid_index = df['Joy'].first_valid_index()
-            # df.at[first_valid_index, 'Joy'] = np.nan
-            # first_valid_index = df['Sadness'].first_valid_index()
-            # df.at[first_valid_index, 'Sadness'] = np.nan
-            # first_valid_index = df['Surprise'].first_valid_index()
-            # df.at[first_valid_index, 'Surprise'] = np.nan
-
             df["Anger"] = df["Anger"].interpolate(method="linear")
             df["Contempt"] = df["Contempt"].interpolate(method="linear")
             df["Disgust"] = df["Disgust"].interpolate(method="linear")

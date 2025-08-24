@@ -1,7 +1,6 @@
 import json
 import os
 from Statistics_Features import statistics_features
-from merge_files import merge_file
 from Imputation import imputation_files
 from final_model_pupil.emotion_data_calculation_all_participants import process_csv_files
 
@@ -68,9 +67,6 @@ def handle_merge_data(repository_data):
     choice_2 = input("\nPress 1 to continue with data merging, or any other key to go back: ")
     if choice_2 == "1":
         print("Merging data with ground truth...")
-        # Uncomment the line below once the function is ready
-        # merge_file(repository_data["combined_file"], repository_data["ground_truth_file"], 
-        #            repository_data["merge_file"], repository_data["gsr_signal_noise"])
     else:
         print("Going back to the main menu...")
 
