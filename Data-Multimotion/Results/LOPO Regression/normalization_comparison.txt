@@ -1,0 +1,1348 @@
+Participant: F5tXL
+  RMSE without normalization: 0.2820
+  RMSE with normalization:    0.2820
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.3389
+  RMSE with normalization:    0.3389
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.2426
+  RMSE with normalization:    0.2426
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2985
+  RMSE with normalization:    0.2985
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.2773
+  RMSE with normalization:    0.2773
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2530
+  RMSE with normalization:    0.2530
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2297
+  RMSE with normalization:    0.2297
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.2188
+  RMSE with normalization:    0.2188
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3452
+  RMSE with normalization:    0.3452
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3458
+  RMSE with normalization:    0.3458
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2408
+  RMSE with normalization:    0.2408
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2650
+  RMSE with normalization:    0.2650
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.3151
+  RMSE with normalization:    0.3151
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.1735
+  RMSE with normalization:    0.1735
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1937
+  RMSE with normalization:    0.1937
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2851
+  RMSE with normalization:    0.2851
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2476
+  RMSE with normalization:    0.2476
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2775
+  RMSE with normalization:    0.2775
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2323
+  RMSE with normalization:    0.2323
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2633
+  RMSE with normalization:    0.2633
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.2843
+  RMSE with normalization:    0.2843
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.2271
+  RMSE with normalization:    0.2271
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.3406
+  RMSE with normalization:    0.3406
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.2243
+  RMSE with normalization:    0.2243
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 0.2359
+  RMSE with normalization:    0.2359
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1725
+  RMSE with normalization:    0.1725
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1975
+  RMSE with normalization:    0.1975
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2779
+  RMSE with normalization:    0.2779
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.2430
+  RMSE with normalization:    0.2430
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2257
+  RMSE with normalization:    0.2257
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2562
+  RMSE with normalization:    0.2562
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.2573
+  RMSE with normalization:    0.2573
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2637
+  RMSE with normalization:    0.2637
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2876
+  RMSE with normalization:    0.2876
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2563
+  RMSE with normalization:    0.2563
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2981
+  RMSE with normalization:    0.2981
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.2604
+Average RMSE with normalization:    0.2604
+========================================
+PUPIL LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON 
+
+Participant: F5tXL
+  RMSE without normalization: 0.2687
+  RMSE with normalization:    0.2687
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.2834
+  RMSE with normalization:    0.2834
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.1665
+  RMSE with normalization:    0.1665
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2300
+  RMSE with normalization:    0.2300
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.1881
+  RMSE with normalization:    0.1881
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.1834
+  RMSE with normalization:    0.1834
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2107
+  RMSE with normalization:    0.2107
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.1819
+  RMSE with normalization:    0.1819
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.2820
+  RMSE with normalization:    0.2820
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3029
+  RMSE with normalization:    0.3029
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.1860
+  RMSE with normalization:    0.1860
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2297
+  RMSE with normalization:    0.2297
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.2643
+  RMSE with normalization:    0.2643
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.1254
+  RMSE with normalization:    0.1254
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1945
+  RMSE with normalization:    0.1945
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2334
+  RMSE with normalization:    0.2334
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.1929
+  RMSE with normalization:    0.1929
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2480
+  RMSE with normalization:    0.2480
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.1686
+  RMSE with normalization:    0.1686
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2348
+  RMSE with normalization:    0.2348
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.2484
+  RMSE with normalization:    0.2484
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.1624
+  RMSE with normalization:    0.1624
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.2254
+  RMSE with normalization:    0.2254
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.2019
+  RMSE with normalization:    0.2019
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 0.2134
+  RMSE with normalization:    0.2134
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1160
+  RMSE with normalization:    0.1160
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1596
+  RMSE with normalization:    0.1596
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2149
+  RMSE with normalization:    0.2149
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.1964
+  RMSE with normalization:    0.1964
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.1627
+  RMSE with normalization:    0.1627
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2098
+  RMSE with normalization:    0.2098
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.1891
+  RMSE with normalization:    0.1891
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2401
+  RMSE with normalization:    0.2401
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2418
+  RMSE with normalization:    0.2418
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2296
+  RMSE with normalization:    0.2296
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2515
+  RMSE with normalization:    0.2515
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.2122
+Average RMSE with normalization:    0.2122
+========================================
+GSR LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - STANDARD SCALER 
+
+Participant: F5tXL
+  RMSE without normalization: 0.2352
+  RMSE with normalization:    0.2608
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.3155
+  RMSE with normalization:    0.3226
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.2315
+  RMSE with normalization:    0.2411
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2369
+  RMSE with normalization:    0.2387
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.2141
+  RMSE with normalization:    0.2074
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2364
+  RMSE with normalization:    0.2378
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2341
+  RMSE with normalization:    0.2389
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.2026
+  RMSE with normalization:    0.2237
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3145
+  RMSE with normalization:    0.3220
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3215
+  RMSE with normalization:    0.3245
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2409
+  RMSE with normalization:    0.2430
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2246
+  RMSE with normalization:    0.2251
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.2579
+  RMSE with normalization:    0.4836
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.2307
+  RMSE with normalization:    0.2291
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1494
+  RMSE with normalization:    0.1498
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2314
+  RMSE with normalization:    0.2378
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2410
+  RMSE with normalization:    0.2422
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2287
+  RMSE with normalization:    0.2285
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2347
+  RMSE with normalization:    0.2374
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2409
+  RMSE with normalization:    0.2299
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.5217
+  RMSE with normalization:    0.5076
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.3356
+  RMSE with normalization:    0.2917
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.2811
+  RMSE with normalization:    0.3366
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.1860
+  RMSE with normalization:    0.1784
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 2.4126
+  RMSE with normalization:    2.1629
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1873
+  RMSE with normalization:    0.1854
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1714
+  RMSE with normalization:    0.1624
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2855
+  RMSE with normalization:    0.3280
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.2412
+  RMSE with normalization:    0.2522
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2103
+  RMSE with normalization:    0.2295
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2040
+  RMSE with normalization:    0.1990
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.2093
+  RMSE with normalization:    0.2146
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2487
+  RMSE with normalization:    0.2492
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2187
+  RMSE with normalization:    0.2181
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2449
+  RMSE with normalization:    0.2404
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2947
+  RMSE with normalization:    0.2924
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.3077
+Average RMSE with normalization:    0.3103
+========================================
+FER LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.2820
+  RMSE with normalization:    0.2820
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.3389
+  RMSE with normalization:    0.3389
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.2426
+  RMSE with normalization:    0.2426
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2985
+  RMSE with normalization:    0.2985
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.2773
+  RMSE with normalization:    0.2773
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2530
+  RMSE with normalization:    0.2530
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2297
+  RMSE with normalization:    0.2297
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.2188
+  RMSE with normalization:    0.2188
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3452
+  RMSE with normalization:    0.3452
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3458
+  RMSE with normalization:    0.3458
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2408
+  RMSE with normalization:    0.2408
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2650
+  RMSE with normalization:    0.2650
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.3151
+  RMSE with normalization:    0.3151
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.1735
+  RMSE with normalization:    0.1735
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1937
+  RMSE with normalization:    0.1937
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2851
+  RMSE with normalization:    0.2851
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2476
+  RMSE with normalization:    0.2476
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2775
+  RMSE with normalization:    0.2775
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2323
+  RMSE with normalization:    0.2323
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2633
+  RMSE with normalization:    0.2633
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.2843
+  RMSE with normalization:    0.2843
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.2271
+  RMSE with normalization:    0.2271
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.3406
+  RMSE with normalization:    0.3406
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.2243
+  RMSE with normalization:    0.2243
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 0.2359
+  RMSE with normalization:    0.2359
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1725
+  RMSE with normalization:    0.1725
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1975
+  RMSE with normalization:    0.1975
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2779
+  RMSE with normalization:    0.2779
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.2430
+  RMSE with normalization:    0.2430
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2257
+  RMSE with normalization:    0.2257
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2562
+  RMSE with normalization:    0.2562
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.2573
+  RMSE with normalization:    0.2573
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2637
+  RMSE with normalization:    0.2637
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2876
+  RMSE with normalization:    0.2876
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2563
+  RMSE with normalization:    0.2563
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2981
+  RMSE with normalization:    0.2981
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.2604
+Average RMSE with normalization:    0.2604
+========================================
+PUPIL LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.2687
+  RMSE with normalization:    0.2687
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.2834
+  RMSE with normalization:    0.2834
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.1665
+  RMSE with normalization:    0.1665
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2300
+  RMSE with normalization:    0.2300
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.1881
+  RMSE with normalization:    0.1881
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.1834
+  RMSE with normalization:    0.1834
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2107
+  RMSE with normalization:    0.2107
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.1819
+  RMSE with normalization:    0.1819
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.2820
+  RMSE with normalization:    0.2820
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3029
+  RMSE with normalization:    0.3029
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.1860
+  RMSE with normalization:    0.1860
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2297
+  RMSE with normalization:    0.2297
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.2643
+  RMSE with normalization:    0.2643
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.1254
+  RMSE with normalization:    0.1254
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1945
+  RMSE with normalization:    0.1945
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2334
+  RMSE with normalization:    0.2334
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.1929
+  RMSE with normalization:    0.1929
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2480
+  RMSE with normalization:    0.2480
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.1686
+  RMSE with normalization:    0.1686
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2348
+  RMSE with normalization:    0.2348
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.2484
+  RMSE with normalization:    0.2484
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.1624
+  RMSE with normalization:    0.1624
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.2254
+  RMSE with normalization:    0.2254
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.2019
+  RMSE with normalization:    0.2019
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 0.2134
+  RMSE with normalization:    0.2134
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1160
+  RMSE with normalization:    0.1160
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1596
+  RMSE with normalization:    0.1596
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2149
+  RMSE with normalization:    0.2149
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.1964
+  RMSE with normalization:    0.1964
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.1627
+  RMSE with normalization:    0.1627
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2098
+  RMSE with normalization:    0.2098
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.1891
+  RMSE with normalization:    0.1891
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2401
+  RMSE with normalization:    0.2401
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2418
+  RMSE with normalization:    0.2418
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2296
+  RMSE with normalization:    0.2296
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2515
+  RMSE with normalization:    0.2515
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.2122
+Average RMSE with normalization:    0.2122
+========================================
+GSR LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.2352
+  RMSE with normalization:    0.2608
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.3155
+  RMSE with normalization:    0.3226
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.2315
+  RMSE with normalization:    0.2411
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.2369
+  RMSE with normalization:    0.2387
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.2141
+  RMSE with normalization:    0.2074
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2364
+  RMSE with normalization:    0.2378
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2341
+  RMSE with normalization:    0.2389
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.2026
+  RMSE with normalization:    0.2237
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3145
+  RMSE with normalization:    0.3220
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3215
+  RMSE with normalization:    0.3245
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2409
+  RMSE with normalization:    0.2430
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.2246
+  RMSE with normalization:    0.2251
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.2579
+  RMSE with normalization:    0.4836
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.2307
+  RMSE with normalization:    0.2291
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.1494
+  RMSE with normalization:    0.1498
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.2314
+  RMSE with normalization:    0.2378
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2410
+  RMSE with normalization:    0.2422
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.2287
+  RMSE with normalization:    0.2285
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2347
+  RMSE with normalization:    0.2374
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.2409
+  RMSE with normalization:    0.2299
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.5217
+  RMSE with normalization:    0.5076
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.3356
+  RMSE with normalization:    0.2917
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.2811
+  RMSE with normalization:    0.3366
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.1860
+  RMSE with normalization:    0.1784
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 2.4126
+  RMSE with normalization:    2.1629
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.1873
+  RMSE with normalization:    0.1854
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.1714
+  RMSE with normalization:    0.1624
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.2855
+  RMSE with normalization:    0.3280
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.2412
+  RMSE with normalization:    0.2522
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2103
+  RMSE with normalization:    0.2295
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.2040
+  RMSE with normalization:    0.1990
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.2093
+  RMSE with normalization:    0.2146
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.2487
+  RMSE with normalization:    0.2492
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.2187
+  RMSE with normalization:    0.2181
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.2449
+  RMSE with normalization:    0.2404
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.2947
+  RMSE with normalization:    0.2924
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.3077
+Average RMSE with normalization:    0.3103
+========================================
+GSR LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.3484
+  RMSE with normalization:    0.3866
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.4199
+  RMSE with normalization:    0.4207
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.3813
+  RMSE with normalization:    0.3807
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3245
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.3092
+  RMSE with normalization:    0.3022
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2701
+  RMSE with normalization:    0.2740
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2718
+  RMSE with normalization:    0.2710
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.3159
+  RMSE with normalization:    0.3363
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3523
+  RMSE with normalization:    0.3536
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3640
+  RMSE with normalization:    0.3718
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2967
+  RMSE with normalization:    0.2946
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.3014
+  RMSE with normalization:    0.2973
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.3687
+  RMSE with normalization:    0.3967
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.2810
+  RMSE with normalization:    0.2777
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.2251
+  RMSE with normalization:    0.2198
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.3721
+  RMSE with normalization:    0.3968
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2835
+  RMSE with normalization:    0.2778
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.3555
+  RMSE with normalization:    0.3436
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2384
+  RMSE with normalization:    0.2413
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.3257
+  RMSE with normalization:    0.3195
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.6857
+  RMSE with normalization:    0.6187
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.3291
+  RMSE with normalization:    0.4232
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.4099
+  RMSE with normalization:    0.4171
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.3269
+  RMSE with normalization:    0.3333
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 4.3812
+  RMSE with normalization:    5.1250
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.2027
+  RMSE with normalization:    0.2072
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.2866
+  RMSE with normalization:    0.2840
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.4370
+  RMSE with normalization:    0.4910
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3769
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2520
+  RMSE with normalization:    0.3080
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.3385
+  RMSE with normalization:    0.3292
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.3060
+  RMSE with normalization:    0.3081
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.3272
+  RMSE with normalization:    0.3462
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.3427
+  RMSE with normalization:    0.3520
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.4342
+  RMSE with normalization:    0.4055
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.3637
+  RMSE with normalization:    0.4365
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.4489
+Average RMSE with normalization:    0.4791
+========================================
+GSR LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.3484
+  RMSE with normalization:    0.3866
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.4199
+  RMSE with normalization:    0.4207
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.3813
+  RMSE with normalization:    0.3807
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3245
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.3092
+  RMSE with normalization:    0.3022
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2701
+  RMSE with normalization:    0.2740
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2718
+  RMSE with normalization:    0.2710
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.3159
+  RMSE with normalization:    0.3363
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3523
+  RMSE with normalization:    0.3536
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3640
+  RMSE with normalization:    0.3718
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2967
+  RMSE with normalization:    0.2946
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.3014
+  RMSE with normalization:    0.2973
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.3687
+  RMSE with normalization:    0.3967
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.2810
+  RMSE with normalization:    0.2777
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.2251
+  RMSE with normalization:    0.2198
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.3721
+  RMSE with normalization:    0.3968
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2835
+  RMSE with normalization:    0.2778
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.3555
+  RMSE with normalization:    0.3436
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2384
+  RMSE with normalization:    0.2413
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.3257
+  RMSE with normalization:    0.3195
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.6857
+  RMSE with normalization:    0.6187
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.3291
+  RMSE with normalization:    0.4232
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.4099
+  RMSE with normalization:    0.4171
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.3269
+  RMSE with normalization:    0.3333
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 4.3812
+  RMSE with normalization:    5.1250
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.2027
+  RMSE with normalization:    0.2072
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.2866
+  RMSE with normalization:    0.2840
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.4370
+  RMSE with normalization:    0.4910
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3769
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2520
+  RMSE with normalization:    0.3080
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.3385
+  RMSE with normalization:    0.3292
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.3060
+  RMSE with normalization:    0.3081
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.3272
+  RMSE with normalization:    0.3462
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.3427
+  RMSE with normalization:    0.3520
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.4342
+  RMSE with normalization:    0.4055
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.3637
+  RMSE with normalization:    0.4365
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.4489
+Average RMSE with normalization:    0.4791
+========================================
+GSR LINEAR REGRESSION MODEL NORMALIZATION/COMPARISON - MIN MAX SCALER -1 and 1 
+
+Participant: F5tXL
+  RMSE without normalization: 0.3484
+  RMSE with normalization:    0.3866
+----------------------------------------
+Participant: Gax8
+  RMSE without normalization: 0.4199
+  RMSE with normalization:    0.4207
+----------------------------------------
+Participant: Hx7dO
+  RMSE without normalization: 0.3813
+  RMSE with normalization:    0.3807
+----------------------------------------
+Participant: wohkw
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3245
+----------------------------------------
+Participant: PPjCX
+  RMSE without normalization: 0.3092
+  RMSE with normalization:    0.3022
+----------------------------------------
+Participant: tMGNS
+  RMSE without normalization: 0.2701
+  RMSE with normalization:    0.2740
+----------------------------------------
+Participant: 5KB3V
+  RMSE without normalization: 0.2718
+  RMSE with normalization:    0.2710
+----------------------------------------
+Participant: EJOiBs
+  RMSE without normalization: 0.3159
+  RMSE with normalization:    0.3363
+----------------------------------------
+Participant: gf5X
+  RMSE without normalization: 0.3523
+  RMSE with normalization:    0.3536
+----------------------------------------
+Participant: gjGzb
+  RMSE without normalization: 0.3640
+  RMSE with normalization:    0.3718
+----------------------------------------
+Participant: LR96S
+  RMSE without normalization: 0.2967
+  RMSE with normalization:    0.2946
+----------------------------------------
+Participant: CoQmx
+  RMSE without normalization: 0.3014
+  RMSE with normalization:    0.2973
+----------------------------------------
+Participant: G5XzoP
+  RMSE without normalization: 0.3687
+  RMSE with normalization:    0.3967
+----------------------------------------
+Participant: XhsN0o
+  RMSE without normalization: 0.2810
+  RMSE with normalization:    0.2777
+----------------------------------------
+Participant: 9FGka
+  RMSE without normalization: 0.2251
+  RMSE with normalization:    0.2198
+----------------------------------------
+Participant: hMHEK1
+  RMSE without normalization: 0.3721
+  RMSE with normalization:    0.3968
+----------------------------------------
+Participant: 4FoNM
+  RMSE without normalization: 0.2835
+  RMSE with normalization:    0.2778
+----------------------------------------
+Participant: 8vDRG
+  RMSE without normalization: 0.3555
+  RMSE with normalization:    0.3436
+----------------------------------------
+Participant: NMy2s
+  RMSE without normalization: 0.2384
+  RMSE with normalization:    0.2413
+----------------------------------------
+Participant: WQzBV
+  RMSE without normalization: 0.3257
+  RMSE with normalization:    0.3195
+----------------------------------------
+Participant: Cr1sTi
+  RMSE without normalization: 0.6857
+  RMSE with normalization:    0.6187
+----------------------------------------
+Participant: EXAMPLE
+  RMSE without normalization: 0.3291
+  RMSE with normalization:    0.4232
+----------------------------------------
+Participant: Gftw5
+  RMSE without normalization: 0.4099
+  RMSE with normalization:    0.4171
+----------------------------------------
+Participant: 6GSd4
+  RMSE without normalization: 0.3269
+  RMSE with normalization:    0.3333
+----------------------------------------
+Participant: D9Hh9
+  RMSE without normalization: 4.3812
+  RMSE with normalization:    5.1250
+----------------------------------------
+Participant: F8mDn
+  RMSE without normalization: 0.2027
+  RMSE with normalization:    0.2072
+----------------------------------------
+Participant: KoG5ii
+  RMSE without normalization: 0.2866
+  RMSE with normalization:    0.2840
+----------------------------------------
+Participant: M4t7k
+  RMSE without normalization: 0.4370
+  RMSE with normalization:    0.4910
+----------------------------------------
+Participant: yb3T2
+  RMSE without normalization: 0.3287
+  RMSE with normalization:    0.3769
+----------------------------------------
+Participant: O1pGR
+  RMSE without normalization: 0.2520
+  RMSE with normalization:    0.3080
+----------------------------------------
+Participant: VckNZ
+  RMSE without normalization: 0.3385
+  RMSE with normalization:    0.3292
+----------------------------------------
+Participant: G4Egk
+  RMSE without normalization: 0.3060
+  RMSE with normalization:    0.3081
+----------------------------------------
+Participant: urJvc
+  RMSE without normalization: 0.3272
+  RMSE with normalization:    0.3462
+----------------------------------------
+Participant: Fjil72
+  RMSE without normalization: 0.3427
+  RMSE with normalization:    0.3520
+----------------------------------------
+Participant: Pi9803
+  RMSE without normalization: 0.4342
+  RMSE with normalization:    0.4055
+----------------------------------------
+Participant: KWgkc
+  RMSE without normalization: 0.3637
+  RMSE with normalization:    0.4365
+----------------------------------------
+SUMMARY:
+Average RMSE without normalization: 0.4489
+Average RMSE with normalization:    0.4791
+========================================
