@@ -1,6 +1,14 @@
 # Introduction
 
-Neuromarketing combines neuroscience, psychology, AI, and marketing to study consumer behavior and decision-making. It uses advanced technologies like EEG, HRV, eye-tracking, and facial expression analysis to measure emotional and cognitive responses, overcoming the limitations of traditional methods like surveys. AI and machine learning, particularly deep learning models like CNNs, play a key role in automating emotion and attention detection from multimodal data (e.g., EEG, ECG). This project, a collaboration between CSEE, the Department of Psychology, and Essex Business School, aims to develop an AI-based tool for emotion recognition and attention detection to enhance neuromarketing research.
+Neuromarketing combines neuroscience, psychology, AI, and marketing to study consumer behavior and decision-making. It uses advanced technologies like EEG, HRV, eye-tracking, and facial expression analysis to measure emotional and cognitive responses, overcoming the limitations of traditional methods like surveys. 
+
+This repository contains the code and other analysis notebooks for the Multi-Motion project for predicting emotions using different bio-signals (FER, pupil, GSR, heart rate, EEG).
+
+The focus of these notebooks is building a fusion model to combine the single modalities of the signals used.
+
+Implemented different modeling approaches including Leave-One-Participant-Out (LOPO) and Leave-Two-Participants-Out (L2PO) cross-validaion, fusion models and modality-specific predictors (focusin on pupil, GSR and FER).
+
+This project, a collaboration between CSEE, the Department of Psychology, and Essex Business School, aims to develop an AI-based tool for emotion recognition and attention detection to enhance neuromarketing research.
 
 # Objective
 
