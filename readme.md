@@ -18,7 +18,7 @@ The primary objective is to develop an AI-based application capable of detecting
 - Leveraging multimodal data (e.g., EEG, ECG) for accurate classification.
 - Supporting neuromarketing research and clinical psychology applications.
 
-# Steps to Set Up and Run the Project
+# Steps to Set Up and Run the Project (Feature Extraction)
 
 1. **Clone the Repository**  
    Clone the repository to your local machine.
@@ -46,3 +46,28 @@ The primary objective is to develop an AI-based application capable of detecting
 
 6. **Compute Feature Matrix**  
    Finally, compute the feature matrix by selecting **option 1**.
+
+
+# Usage (Machine Learning)
+### Option 1: Run on Google Colab
+1. Open the notebook in Colab.
+2. Mount the Google Drive for the stored data.
+3. Run all cells to reproduce the experiments.
+
+### Option 2: Run locally
+1. Clone the repository.
+2. Run the file either in IDE or bash.
+
+```
+python filename.py
+```
+
+## Features
+- LOPO and L2PO cross-validation
+- Fusion models combining pupil, GSR and FER predictions
+- Custom stacked SVR and LGBM model for modalities
+- Analysing the regression coefficients
+- Exporting results as files
+
+## Note
+This project is part of the thesis submitted for the degree of Master of Science in Artificial Intelligence.
